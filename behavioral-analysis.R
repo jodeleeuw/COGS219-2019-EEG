@@ -5,14 +5,14 @@ library(ggplot2)
 all.behavioral.data <- read_csv('data/tidy/behavioral-data-tidy.csv')
 
 subject.level <- all.behavioral.data %>% 
-  filter(phase == 'test' & target_lag %in% c(2,8)) %>%
-  group_by(participant_id, distractor_type, target_lag) %>%
+  filter(phase == 'test', target_lag %in% c(2,8)) %>%
   mutate(correct = as.numeric((correct == 'true'))) %>%
+  group_by(participant_id, distractor_type, target_lag) %>%
   summarize(accuracy = mean(correct))
 
 summary.data <- subject.level %>%
   group_by(distractor_type, target_lag) %>%
-  summarize(M=mean(accuracy), SE=sd(accuracy)/sqrt(n()))
+  summarize(M=mean(accuracy), SD=sd(accuracy), SE=sd(accuracy)/sqrt(n()))
 
 ggplot(subject.level, aes(x=target_lag, y=accuracy, color=distractor_type, group=interaction(participant_id, distractor_type)))+
   geom_line(size=2)+
@@ -27,6 +27,16 @@ ggplot(summary.data, aes(x=target_lag, y=M, color=distractor_type, group=distrac
   theme_bw()+
   theme(panel.grid=element_blank())
   
+
+t.test(~accuracy, data=subject.level, mu = 0)
+
+
+
+
+
+
+
+
 
 library(ez)
 ezANOVA(subject.level, dv=accuracy, wid=participant_id, within=c(target_lag, distractor_type))

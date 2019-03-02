@@ -1,0 +1,104 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(ez)
+```
+
+# Behavioral Data
+
+# EEG Data
+
+We start by loading in the tidy EEG data. See the `generate-tidy-eeg-data.R` file for the pre-processing steps that produced this file.
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+# no progress bar because that seems to slow down read_csv in R notebooks.
+eeg.data <- read_csv('data/tidy/eeg-data-tidy.csv', progress= FALSE)
+```
+
+## N2
+
+### Distractor Pictures
+
+Kennedy et al. start by isolating the N2 in response to the distractor images by subtracting the lag 8 baseline from the negative and neutral lag 8 conditions.
+
+We calculate the difference wave at each electrode for each subject in each condition.
+
+```{r}
+lag8.data <- eeg.data %>%
+  filter(lag.condition == "Lag8", electrode %in% c(64,68,69,89,94,95)) %>%
+  mutate(hemisphere = if_else(electrode > 70, "right","left")) %>%
+  select(-lag.condition)
+
+lag8.baseline.data <- lag8.data %>% 
+  filter(distractor.condition == "Baseline") %>%
+  mutate(baseline.voltage = voltage) %>%
+  select(-voltage, -distractor.condition)
+
+lag8.difference.waves <- lag8.data %>%
+  left_join(lag8.baseline.data, by=c("subject", "t", "electrode", "hemisphere")) %>%
+  mutate(difference.wave = voltage - baseline.voltage) %>%
+  select(-voltage, -baseline.voltage) %>%
+  filter(distractor.condition != "Baseline")
+```
+
+A two-factor ANOVA (hemisphere x distractor type) in the time window 185-275ms, on peak negative amplitude. (First average over hemisphere, then find peak)
+
+```{r}
+n2.distractor.anova.data <- lag8.difference.waves %>%
+  filter(t %in% 185:275) %>%
+  group_by(subject, hemisphere, distractor.condition, t) %>%
+  summarize(M = mean(difference.wave)) %>%
+  group_by(subject, hemisphere, distractor.condition) %>%
+  summarize(peak = min(M))
+
+n2.distractor.anova <- ezANOVA(n2.distractor.anova.data, wid=subject, dv=peak, within=c(hemisphere, distractor.condition))
+
+n2.distractor.anova$ANOVA
+```
+
+Follow up t-tests.
+
+First we have to collapse over hemisphere. Note that we take the MIN rather than average when collapsing over hemisphere since we are looking for peak negative amplitude.
+
+```{r}
+n2.distractor.t.test.data <- n2.distractor.anova.data %>%
+  group_by(subject, distractor.condition) %>%
+  summarize(peak = min(peak))
+```
+
+Is negative less than neutral?
+
+```{r}
+t.test(peak ~ distractor.condition, data=n2.distractor.t.test.data, alternative=c("less"))
+```
+
+
+Follow up one-sample, one-tailed t-tests to see if N2s are less than 0.
+
+Negative condition:
+
+```{r}
+n2.distractor.t.test.data %>%
+  filter(distractor.condition == "Negative") %>%
+  pull(peak) %>%
+  t.test(mu=0, alternative="less")
+```
+
+Neutral condition:
+
+```{r}
+n2.distractor.t.test.data %>%
+  filter(distractor.condition == "Neutral") %>%
+  pull(peak) %>%
+  t.test(mu=0, alternative="less")
+```
+
+### Target Pictures
+
+

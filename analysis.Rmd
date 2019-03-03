@@ -31,18 +31,18 @@ Kennedy et al. start by isolating the N2 in response to the distractor images by
 We calculate the difference wave at each electrode for each subject in each condition.
 
 ```{r}
-lag8.data <- eeg.data %>%
+n2.distractor.data <- eeg.data %>%
   filter(lag.condition == "Lag8", electrode %in% c(64,68,69,89,94,95)) %>%
   mutate(hemisphere = if_else(electrode > 70, "right","left")) %>%
   select(-lag.condition)
 
-lag8.baseline.data <- lag8.data %>% 
+n2.distractor.baseline.data <- n2.distractor.data %>% 
   filter(distractor.condition == "Baseline") %>%
   mutate(baseline.voltage = voltage) %>%
   select(-voltage, -distractor.condition)
 
-lag8.difference.waves <- lag8.data %>%
-  left_join(lag8.baseline.data, by=c("subject", "t", "electrode", "hemisphere")) %>%
+n2.distractor.difference.waves <- n2.distractor.data %>%
+  left_join(n2.distractor.baseline.data, by=c("subject", "t", "electrode", "hemisphere")) %>%
   mutate(difference.wave = voltage - baseline.voltage) %>%
   select(-voltage, -baseline.voltage) %>%
   filter(distractor.condition != "Baseline")
@@ -50,8 +50,8 @@ lag8.difference.waves <- lag8.data %>%
 
 A two-factor ANOVA (hemisphere x distractor type) in the time window 185-275ms, on peak negative amplitude. (First average over hemisphere, then find peak)
 
-```{r}
-n2.distractor.anova.data <- lag8.difference.waves %>%
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+n2.distractor.anova.data <- n2.distractor.difference.waves %>%
   filter(t %in% 185:275) %>%
   group_by(subject, hemisphere, distractor.condition, t) %>%
   summarize(M = mean(difference.wave)) %>%
@@ -102,8 +102,8 @@ n2.distractor.t.test.data %>%
 
 Basic plotting of the ERPs. (You should make a better plot than this!)
 
-```{r}
-n2.distractor.erp <- lag8.difference.waves %>%
+```{r echo=FALSE}
+n2.distractor.erp <- n2.distractor.difference.waves %>%
   group_by(distractor.condition, t) %>%
   summarize(M = mean(difference.wave))
 
@@ -129,7 +129,7 @@ n2.target.difference.waves <- n2.target.data %>%
 ```
 
 ANOVA
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 n2.target.anova.data <- n2.target.difference.waves %>%
   filter(t %in% 405:585) %>%
   group_by(subject, hemisphere, distractor.condition) %>%
@@ -140,12 +140,9 @@ n2.target.anova$ANOVA
   
 ```
 
-Follow up t-tests
-
-
 Basic plot
 
-```{r}
+```{r echo=FALSE}
 n2.target.plotting.data <- n2.target.difference.waves %>% 
   group_by(distractor.condition, t) %>%
   summarize(M=mean(difference.wave))
@@ -177,7 +174,7 @@ p3b.target.difference.waves <- p3b.target.data %>%
 
 ANOVA
 
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 p3b.target.anova.data <- p3b.target.difference.waves %>%
   filter(t %in% 635:995) %>%
   group_by(subject, distractor.condition) %>%
@@ -189,7 +186,7 @@ p3b.target.anova$ANOVA
 
 Plot
 
-```{r}
+```{r echo=FALSE}
 
 p3b.target.plot.data <- p3b.target.difference.waves %>%
   group_by(t, distractor.condition) %>%
@@ -214,18 +211,26 @@ p3b.distractor.baseline <- p3b.distractor.data %>%
   mutate(baseline.voltage = voltage) %>%
   select(-voltage, -distractor.condition)
   
+# need to merge in lag 2 baseline - lag 8 baseline
+p3b.distractor.baseline.difference <- eeg.data %>%
+  filter(electrode %in% c(54,55,79,78,61,62)) %>%
+  filter(distractor.condition == "Baseline") %>%
+  spread(lag.condition, voltage) %>%
+  mutate(difference.wave = Lag2 - Lag8) %>%
+  select(-Lag2, -Lag8)
+
 p3b.distractor.difference.waves <- p3b.distractor.data %>%
   inner_join(p3b.distractor.baseline, by=c("subject", "t", "electrode")) %>%
   filter(distractor.condition != "Baseline") %>%
   mutate(difference.wave = voltage - baseline.voltage) %>%
-  select(-baseline.voltage)
+  select(-baseline.voltage, -voltage) %>%
+  rbind(p3b.distractor.baseline.difference)
 
-# need to merge in lag 2 baseline - lag 8 baseline
 ```
 
 ANOVA
 
-```{r}
+```{r echo=FALSE, message=FALSE, warning=FALSE}
 p3b.distractor.anova.data <- p3b.distractor.difference.waves %>%
   filter(t %in% 400:550) %>%
   group_by(subject, distractor.condition) %>%
@@ -237,7 +242,7 @@ p3b.distractor.anova$ANOVA
 
 
 Plot
-```{r}
+```{r echo=FALSE}
 p3b.distractor.plot.data <- p3b.distractor.difference.waves %>%
   group_by(distractor.condition, t) %>%
   summarize(M=mean(difference.wave))
@@ -246,3 +251,48 @@ ggplot(p3b.distractor.plot.data, aes(x=t, y=M, color=distractor.condition))+
   geom_line()
 ```
 
+## Posterior Positivity
+
+Remove lag 8 baseline from lag 8 neutral and negative, as in the N2 analysis. But the electrodes are different here: 64, 68, 69, 96, 100, 101.
+Critical time window: 405-615ms.
+
+```{r}
+pp.data <- eeg.data %>%
+  filter(lag.condition == "Lag8", electrode %in% c(64,68,69,96,100,101)) %>%
+  mutate(hemisphere = if_else(electrode > 70, "right","left")) %>%
+  select(-lag.condition)
+
+pp.baseline.data <- pp.data %>% 
+  filter(distractor.condition == "Baseline") %>%
+  mutate(baseline.voltage = voltage) %>%
+  select(-voltage, -distractor.condition)
+
+pp.difference.waves <- pp.data %>%
+  left_join(pp.baseline.data, by=c("subject", "t", "electrode", "hemisphere")) %>%
+  mutate(difference.wave = voltage - baseline.voltage) %>%
+  select(-voltage, -baseline.voltage) %>%
+  filter(distractor.condition != "Baseline")
+```
+
+ANOVA
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+pp.data.anova <- pp.difference.waves %>%
+  filter(t %in% 405:615) %>%
+  group_by(subject, distractor.condition, hemisphere) %>%
+  summarize(M = mean(difference.wave))
+
+pp.anova <- ezANOVA(pp.data.anova, wid=subject, dv=M, within=c(hemisphere, distractor.condition))
+pp.anova$ANOVA
+```
+
+Plot
+
+```{r echo=FALSE}
+pp.data.plot <- pp.difference.waves %>%
+  group_by(t, distractor.condition) %>%
+  summarize(M = mean(difference.wave))
+
+ggplot(pp.data.plot, aes(x=t, y=M, color=distractor.condition))+
+  geom_line()
+```

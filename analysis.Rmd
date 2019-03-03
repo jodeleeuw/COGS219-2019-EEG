@@ -68,6 +68,7 @@ n2.distractor.anova$ANOVA
 Follow up t-tests.
 
 First we have to collapse over hemisphere. Note that we take the MIN rather than average when collapsing over hemisphere since we are looking for peak negative amplitude.
+(Code is shown here to provide a model for performing t-tests.
 
 ```{r}
 n2.distractor.t.test.data <- n2.distractor.anova.data %>%
@@ -87,6 +88,7 @@ Follow up one-sample, one-tailed t-tests to see if N2s are less than 0.
 Negative condition:
 
 ```{r}
+# the pull() command extracts the column from the data frame.
 n2.distractor.t.test.data %>%
   filter(distractor.condition == "Negative") %>%
   pull(peak) %>%
@@ -103,6 +105,7 @@ n2.distractor.t.test.data %>%
 ```
 
 Basic plotting of the ERPs. (You should make a better plot than this!)
+This is analogous to Figure 3.
 
 ```{r echo=FALSE}
 n2.distractor.erp <- n2.distractor.difference.waves %>%
@@ -130,7 +133,8 @@ n2.target.difference.waves <- n2.target.data %>%
   select(-Lag2, -Lag8)
 ```
 
-ANOVA
+ANOVA on mean difference (Kennedy et al. are not clear about whether this should be peak or mean...) in the time window 405-585ms after distractor.
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 n2.target.anova.data <- n2.target.difference.waves %>%
   filter(t %in% 405:585) %>%
@@ -142,7 +146,7 @@ n2.target.anova$ANOVA
   
 ```
 
-Basic plot
+Basic plot (Figure 4)
 
 ```{r echo=FALSE}
 n2.target.plotting.data <- n2.target.difference.waves %>% 
@@ -186,7 +190,7 @@ p3b.target.anova <- ezANOVA(p3b.target.anova.data, wid=subject, dv=M, within=c(d
 p3b.target.anova$ANOVA
 ```
 
-Plot
+Plot (Figure 5)
 
 ```{r echo=FALSE}
 
@@ -242,8 +246,8 @@ p3b.distractor.anova <- ezANOVA(p3b.distractor.anova.data, wid=subject, dv=M, wi
 p3b.distractor.anova$ANOVA
 ```
 
+Plot (Figure 6)
 
-Plot
 ```{r echo=FALSE}
 p3b.distractor.plot.data <- p3b.distractor.difference.waves %>%
   group_by(distractor.condition, t) %>%
@@ -288,7 +292,7 @@ pp.anova <- ezANOVA(pp.data.anova, wid=subject, dv=M, within=c(hemisphere, distr
 pp.anova$ANOVA
 ```
 
-Plot
+Plot (Figure 7)
 
 ```{r echo=FALSE}
 pp.data.plot <- pp.difference.waves %>%

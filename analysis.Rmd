@@ -13,7 +13,35 @@ library(tidyr)
 
 # Behavioral Data
 
-TBD
+Graph
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+all.behavioral.data <- read_csv('data/tidy/behavioral-data-tidy.csv', progress = FALSE)
+
+subject.level <- all.behavioral.data %>% 
+  filter(phase == 'test', target_lag %in% c(2,8)) %>%
+  mutate(correct = as.numeric((correct == 'true'))) %>%
+  group_by(participant_id, distractor_type, target_lag) %>%
+  summarize(accuracy = mean(correct))
+
+summary.data <- subject.level %>%
+  group_by(distractor_type, target_lag) %>%
+  summarize(M=mean(accuracy), SD=sd(accuracy), SE=sd(accuracy)/sqrt(n()))
+
+ggplot(summary.data, aes(x=target_lag, y=M, color=distractor_type, group=distractor_type))+
+  geom_line(size=1)+
+  geom_point(size=2)+
+  geom_errorbar(aes(ymin=M-SE, ymax=M+SE), size=1,width=0.2)+
+  theme_bw()+
+  theme(panel.grid=element_blank())
+```
+
+ANOVA
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+behavioral.anova <- ezANOVA(subject.level, dv=accuracy, wid=participant_id, within=c(target_lag, distractor_type))
+behavioral.anova$ANOVA
+```
 
 # EEG Data
 
@@ -146,6 +174,41 @@ n2.target.anova$ANOVA
   
 ```
 
+
+Post-hoc tests
+
+```{r echo=FALSE}
+n2.target.t.test.data <- n2.target.anova.data %>%
+  group_by(subject, distractor.condition) %>%
+  summarize(M=mean(M))
+```
+
+Baseline vs. Negative. Is Baseline LESS than Negative, one-tailed?
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (n2.target.t.test.data %>% filter(distractor.condition != "Neutral")),
+       paired = TRUE,
+       alternative="less")
+```
+
+Baseline vs. Neutral. Is Baseline LESS than Neural, one tailed?
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (n2.target.t.test.data %>% filter(distractor.condition != "Negative")),
+       paired = TRUE,
+       alternative="less")
+```
+
+Negative vs. Neutral. Is Neutral LESS than Negative, one tailed?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (n2.target.t.test.data %>% filter(distractor.condition != "Baseline")),
+       paired = TRUE,
+       alternative="greater")
+```
+
+
 Basic plot (Figure 4)
 
 ```{r echo=FALSE}
@@ -188,6 +251,35 @@ p3b.target.anova.data <- p3b.target.difference.waves %>%
 
 p3b.target.anova <- ezANOVA(p3b.target.anova.data, wid=subject, dv=M, within=c(distractor.condition))
 p3b.target.anova$ANOVA
+```
+
+Post-hoc tests
+
+Is Baseline GREATER than Neutral?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (p3b.target.anova.data %>% filter(distractor.condition != "Negative")),
+       paired = TRUE,
+       alternative="greater")
+```
+
+Is Baseline GREATER than Negative?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (p3b.target.anova.data %>% filter(distractor.condition != "Neutral")),
+       paired = TRUE,
+       alternative="greater")
+```
+
+Is Neutral GREATER than Negative?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (p3b.target.anova.data %>% filter(distractor.condition != "Baseline")),
+       paired = TRUE,
+       alternative="less")
 ```
 
 Plot (Figure 5)
@@ -246,6 +338,39 @@ p3b.distractor.anova <- ezANOVA(p3b.distractor.anova.data, wid=subject, dv=M, wi
 p3b.distractor.anova$ANOVA
 ```
 
+Post-hoc tests
+
+```{r}
+plot(M ~ factor(distractor.condition), data=p3b.distractor.anova.data)
+```
+
+Is Baseline GREATER than Neutral?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (p3b.distractor.anova.data %>% filter(distractor.condition != "Negative")),
+       paired = TRUE,
+       alternative="greater")
+```
+
+Is Baseline GREATER than Negative?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (p3b.distractor.anova.data %>% filter(distractor.condition != "Neutral")),
+       paired = TRUE,
+       alternative="greater")
+```
+
+Is Neutral GREATER than Negative?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (p3b.distractor.anova.data %>% filter(distractor.condition != "Baseline")),
+       paired = TRUE,
+       alternative="less")
+```
+
 Plot (Figure 6)
 
 ```{r echo=FALSE}
@@ -292,6 +417,23 @@ pp.anova <- ezANOVA(pp.data.anova, wid=subject, dv=M, within=c(hemisphere, distr
 pp.anova$ANOVA
 ```
 
+Post-hoc comparisons
+
+```{r echo=FALSE}
+pp.data.t.test <- pp.data.anova %>%
+  group_by(subject, distractor.condition) %>%
+  summarize(M= mean(M))
+```
+
+Is Baseline GREATER than Neutral?
+
+```{r echo=FALSE}
+t.test(M ~ distractor.condition, 
+       data = (p3b.target.anova.data %>% filter(distractor.condition != "Negative")),
+       paired = TRUE,
+       alternative="greater")
+```
+
 Plot (Figure 7)
 
 ```{r echo=FALSE}
@@ -302,3 +444,35 @@ pp.data.plot <- pp.difference.waves %>%
 ggplot(pp.data.plot, aes(x=t, y=M, color=distractor.condition))+
   geom_line()
 ```
+
+## Correct vs. Incorrect
+
+Load the segmented data for correct v. incorrect. Only looking at Lag 2 negative distractor condition, because that's where most errors are!
+
+```{r}
+eeg.data.correct.incorrect <- read_csv('data/tidy/eeg-data-correct-incorrect-tidy.csv')
+```
+
+### Distractor N2 and Posterior Positivity
+
+
+#### N2
+
+Same sensors as previous N2. Time window 250-350.
+
+t-test between left/right hemisphere on the difference wave between L/R.
+
+one sample t-test against 0 for difference wave.
+
+
+#### PP
+
+same sensors as ??. Unclear!
+
+410-650ms after distractor.
+
+one-sample t-test on the difference.
+
+
+
+### Distractor and Target P3b

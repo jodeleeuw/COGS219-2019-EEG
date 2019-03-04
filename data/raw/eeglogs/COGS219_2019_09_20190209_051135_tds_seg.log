@@ -1,0 +1,701 @@
+Category	Segment number	Segment Good	Eye Blinks	Eye Movements	Bad Channels
+Lag2Baseline	1	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	2	true	false	false	8, 44, 45, 57, 63, 99, 113
+Lag2Baseline	3	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	4	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	5	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	6	true	false	false	40, 42, 44, 45, 57, 63, 99, 101, 113
+Lag2Baseline	7	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	8	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	9	true	false	false	42, 44, 45, 57, 63, 99, 113
+Lag2Baseline	10	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	11	true	false	false	44, 57, 63, 99, 113
+Lag2Baseline	12	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	13	true	false	false	44, 57, 63, 99, 113
+Lag2Baseline	14	true	false	false	40, 44, 45, 57, 63, 99, 113
+Lag2Baseline	15	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	16	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	17	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	18	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Baseline	19	true	false	false	45, 57, 63, 99, 113
+Lag2Baseline	20	true	false	false	45, 57, 63, 99, 113
+Lag2Baseline	21	true	false	false	17, 45, 50, 57, 63, 94, 99, 113
+Lag2Baseline	22	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	23	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	24	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	25	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	26	true	false	false	45, 50, 57, 63, 99, 109, 113
+Lag2Baseline	27	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	28	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Baseline	29	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	30	true	false	false	45, 50, 57, 63, 99, 113, 122
+Lag2Baseline	31	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	32	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Baseline	33	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	34	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	35	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	36	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	37	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Baseline	38	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Baseline	39	true	false	false	45, 50, 57, 63, 64, 69, 99, 101, 113, 122
+Lag2Baseline	40	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag2Baseline	41	false	false	false	45, 47, 50, 57, 58, 63, 64, 90, 99, 101, 113
+Lag2Baseline	42	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag2Baseline	43	false	false	false	45, 50, 57, 58, 63, 64, 90, 99, 101, 113, 122
+Lag2Baseline	44	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag2Baseline	45	false	false	false	45, 47, 50, 51, 57, 58, 63, 64, 75, 99, 101, 113, 122, 123
+Lag2Baseline	46	false	false	false	45, 50, 57, 58, 63, 64, 90, 99, 101, 102, 113
+Lag2Baseline	47	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Baseline	48	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 90, 99, 101, 102, 113
+Lag2Baseline	49	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag2Baseline	50	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 90, 99, 101, 102, 113, 122
+Lag2Baseline	51	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Baseline	52	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 99, 101, 102, 113
+Lag2Baseline	53	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 89, 99, 101, 102, 113
+Lag2Baseline	54	false	false	false	45, 50, 57, 58, 63, 64, 75, 89, 99, 101, 113
+Lag2Baseline	55	false	false	false	20, 35, 45, 50, 51, 57, 58, 63, 64, 75, 82, 89, 99, 101, 102, 113
+Lag2Baseline	56	false	false	false	35, 45, 47, 50, 51, 57, 58, 63, 64, 75, 90, 99, 101, 113
+Lag2Baseline	57	false	false	false	35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 99, 101, 113
+Lag2Baseline	58	true	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag2Baseline	59	true	false	false	35, 45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Baseline	60	false	false	false	35, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 102, 113
+Lag2Baseline	61	false	false	false	35, 36, 39, 40, 45, 47, 50, 57, 58, 63, 64, 74, 75, 79, 81, 82, 88, 90, 96, 99, 100, 101, 113, 122, 123
+Lag2Baseline	62	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 79, 82, 90, 96, 97, 99, 100, 101, 102, 113, 122, 123
+Lag2Baseline	63	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag2Baseline	64	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 79, 82, 90, 96, 99, 100, 101, 102, 113, 122, 123
+Lag2Baseline	65	false	false	false	35, 39, 45, 47, 50, 51, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 122, 123
+Lag2Baseline	66	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 113, 123
+Lag2Baseline	67	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 113, 123
+Lag2Baseline	68	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag2Baseline	69	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 81, 82, 96, 99, 100, 101, 113, 123
+Lag2Baseline	70	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 113, 122, 123
+Lag2Baseline	71	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Baseline	72	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 113, 123
+Lag2Baseline	73	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 102, 108, 113, 123
+Lag2Baseline	74	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag2Baseline	75	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	76	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 71, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Baseline	77	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	78	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 89, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	79	false	false	false	39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 89, 96, 99, 101, 108, 113, 123
+Lag2Baseline	80	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	81	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Baseline	82	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Baseline	83	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 123
+Lag2Baseline	84	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 97, 99, 100, 101, 102, 108, 113, 117, 123
+Lag2Baseline	85	false	false	false	28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 97, 99, 100, 101, 102, 108, 113, 117, 122, 123
+Lag2Baseline	86	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 96, 97, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	87	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Baseline	88	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 113, 123
+Lag2Baseline	89	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag2Baseline	90	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 108, 123
+Lag2Baseline	91	false	false	false	28, 35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	92	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 71, 74, 75, 76, 79, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	93	false	false	false	35, 39, 42, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 102, 108, 123
+Lag2Baseline	94	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Baseline	95	false	false	false	7, 20, 24, 28, 29, 35, 36, 37, 39, 40, 45, 46, 47, 50, 51, 52, 55, 57, 58, 59, 63, 64, 71, 74, 75, 76, 78, 79, 80, 81, 82, 84, 86, 89, 90, 96, 99, 100, 101, 102, 106, 108, 113, 117, 122, 123, 124
+Lag2Baseline	96	false	false	false	35, 36, 39, 40, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Baseline	97	false	false	false	35, 36, 39, 40, 42, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 76, 82, 89, 96, 97, 99, 101, 108, 113, 123
+Lag2Baseline	98	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag2Baseline	99	false	false	false	24, 28, 34, 35, 36, 39, 40, 42, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 91, 96, 99, 100, 101, 102, 108, 109, 113, 122, 123
+Lag2Baseline	100	false	false	false	24, 28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 59, 63, 64, 74, 75, 76, 81, 82, 90, 91, 96, 99, 100, 101, 102, 108, 109, 113, 117, 122, 123
+Lag2Neutral	1	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	2	true	false	false	44, 57, 63, 99, 113
+Lag2Neutral	3	true	false	false	44, 57, 63, 99, 113
+Lag2Neutral	4	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	5	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	6	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	7	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	8	true	false	false	44, 45, 57, 63, 90, 99, 101, 113
+Lag2Neutral	9	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	10	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	11	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	12	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	13	true	false	false	44, 57, 63, 99, 113
+Lag2Neutral	14	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	15	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	16	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Neutral	17	true	false	false	45, 57, 63, 99, 113
+Lag2Neutral	18	true	false	false	45, 57, 63, 99, 113
+Lag2Neutral	19	true	false	false	45, 57, 63, 99, 113
+Lag2Neutral	20	true	false	false	45, 57, 63, 99, 113
+Lag2Neutral	21	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	22	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	23	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	24	true	false	false	45, 50, 57, 63, 90, 99, 113
+Lag2Neutral	25	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	26	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	27	true	false	false	45, 50, 57, 63, 73, 99, 113
+Lag2Neutral	28	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	29	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	30	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	31	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Neutral	32	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Neutral	33	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	34	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	35	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Neutral	36	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag2Neutral	37	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Neutral	38	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Neutral	39	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Neutral	40	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Neutral	41	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Neutral	42	false	false	false	45, 47, 50, 51, 57, 58, 63, 64, 99, 101, 102, 113
+Lag2Neutral	43	true	false	false	45, 50, 57, 58, 63, 64, 99, 102, 113
+Lag2Neutral	44	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag2Neutral	45	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag2Neutral	46	false	false	false	35, 45, 47, 50, 51, 52, 57, 58, 63, 64, 90, 99, 101, 102, 113
+Lag2Neutral	47	false	false	false	45, 50, 57, 58, 63, 64, 88, 99, 101, 102, 113, 119, 122
+Lag2Neutral	48	false	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 102, 113
+Lag2Neutral	49	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag2Neutral	50	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 90, 99, 101, 102, 113, 122
+Lag2Neutral	51	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag2Neutral	52	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag2Neutral	53	false	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 102, 113
+Lag2Neutral	54	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Neutral	55	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag2Neutral	56	true	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag2Neutral	57	false	false	false	28, 35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 99, 101, 102, 113, 122
+Lag2Neutral	58	false	false	false	35, 45, 47, 50, 51, 57, 58, 63, 64, 75, 82, 99, 101, 113
+Lag2Neutral	59	false	false	false	45, 50, 57, 58, 63, 64, 75, 82, 99, 101, 102, 113
+Lag2Neutral	60	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 82, 99, 101, 113
+Lag2Neutral	61	false	false	false	35, 45, 50, 52, 57, 58, 63, 64, 75, 81, 82, 90, 96, 97, 99, 101, 113, 122, 123
+Lag2Neutral	62	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 102, 113, 117, 123
+Lag2Neutral	63	false	false	false	35, 39, 45, 47, 50, 51, 57, 58, 63, 64, 71, 75, 79, 82, 90, 96, 99, 100, 101, 113, 117, 122, 123
+Lag2Neutral	64	false	false	false	35, 39, 45, 50, 57, 58, 63, 64, 75, 82, 96, 97, 99, 101, 113, 123
+Lag2Neutral	65	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 79, 82, 90, 96, 99, 100, 101, 102, 113, 122, 123
+Lag2Neutral	66	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 71, 75, 79, 82, 96, 99, 100, 101, 113, 122, 123
+Lag2Neutral	67	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag2Neutral	68	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 113, 123
+Lag2Neutral	69	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 117, 122, 123
+Lag2Neutral	70	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag2Neutral	71	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 68, 71, 74, 75, 76, 79, 81, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 117, 122, 123
+Lag2Neutral	72	false	false	true	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Neutral	73	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 108, 113, 122, 123
+Lag2Neutral	74	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Neutral	75	false	false	false	35, 39, 42, 45, 46, 47, 50, 51, 57, 58, 63, 64, 75, 82, 89, 96, 99, 100, 101, 108, 113, 123
+Lag2Neutral	76	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 113, 123
+Lag2Neutral	77	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Neutral	78	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Neutral	79	false	false	false	28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 91, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Neutral	80	false	false	false	33, 35, 39, 40, 42, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Neutral	81	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 123
+Lag2Neutral	82	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag2Neutral	83	false	false	false	35, 37, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag2Neutral	84	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag2Neutral	85	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag2Neutral	86	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 108, 123
+Lag2Neutral	87	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag2Neutral	88	false	false	false	35, 39, 40, 45, 46, 47, 49, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Neutral	89	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Neutral	90	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Neutral	91	false	false	false	35, 36, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 108, 123
+Lag2Neutral	92	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag2Neutral	93	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 122, 123
+Lag2Neutral	94	false	false	false	28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 79, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Neutral	95	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 96, 97, 99, 100, 101, 102, 108, 123
+Lag2Neutral	96	false	false	false	24, 28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 79, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Neutral	97	false	false	false	28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Neutral	98	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Neutral	99	false	true	true	1, 2, 8, 17, 25, 26, 27, 32, 35, 36, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 120, 121, 122, 123, 125, 126
+Lag2Neutral	100	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Negative	1	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	2	true	false	false	44, 57, 63, 99, 113
+Lag2Negative	3	true	false	false	44, 57, 63, 99, 113
+Lag2Negative	4	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	5	true	false	false	44, 57, 63, 99, 113
+Lag2Negative	6	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	7	true	false	false	44, 57, 63, 99, 113
+Lag2Negative	8	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	9	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	10	true	false	false	44, 57, 63, 99, 113
+Lag2Negative	11	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	12	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	13	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	14	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	15	true	false	false	44, 45, 57, 63, 99, 113
+Lag2Negative	16	true	false	false	45, 57, 63, 99, 113
+Lag2Negative	17	true	false	false	45, 57, 63, 99, 113
+Lag2Negative	18	true	false	false	45, 57, 63, 99, 113
+Lag2Negative	19	true	false	false	45, 57, 63, 99, 113
+Lag2Negative	20	true	false	false	45, 57, 63, 99, 113
+Lag2Negative	21	true	false	false	45, 50, 57, 63, 64, 67, 68, 69, 99, 113
+Lag2Negative	22	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	23	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	24	true	false	false	45, 50, 57, 63, 64, 99, 101, 113
+Lag2Negative	25	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	26	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	27	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	28	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	29	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	30	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	31	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	32	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	33	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	34	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	35	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	36	false	false	false	45, 47, 50, 57, 58, 63, 64, 90, 99, 101, 113, 122
+Lag2Negative	37	true	false	false	45, 50, 57, 63, 99, 113
+Lag2Negative	38	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Negative	39	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag2Negative	40	true	false	false	45, 50, 57, 58, 59, 63, 64, 99, 113, 122
+Lag2Negative	41	false	false	false	42, 45, 47, 50, 57, 58, 63, 64, 68, 69, 73, 75, 81, 94, 99, 101, 113, 122
+Lag2Negative	42	true	false	false	36, 45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Negative	43	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag2Negative	44	true	false	false	45, 47, 50, 57, 58, 63, 64, 99, 113
+Lag2Negative	45	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Negative	46	true	false	false	45, 47, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Negative	47	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag2Negative	48	true	false	false	10, 45, 50, 57, 58, 63, 64, 99, 102, 113
+Lag2Negative	49	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag2Negative	50	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Negative	51	false	false	false	35, 45, 50, 57, 58, 63, 64, 90, 99, 101, 102, 113
+Lag2Negative	52	true	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag2Negative	53	false	false	false	28, 35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 82, 90, 91, 96, 99, 101, 102, 113, 122, 123
+Lag2Negative	54	true	false	false	35, 45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Negative	55	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag2Negative	56	false	false	false	35, 36, 45, 47, 50, 51, 57, 58, 63, 64, 75, 82, 89, 90, 99, 101, 113
+Lag2Negative	57	false	false	false	28, 35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 82, 90, 96, 99, 101, 102, 113, 122
+Lag2Negative	58	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag2Negative	59	false	false	false	35, 40, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 90, 96, 99, 101, 102, 113
+Lag2Negative	60	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113
+Lag2Negative	61	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 90, 96, 97, 99, 101, 113, 123
+Lag2Negative	62	false	false	false	35, 39, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 97, 99, 101, 102, 113, 123
+Lag2Negative	63	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 113, 122, 123
+Lag2Negative	64	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag2Negative	65	false	false	false	35, 39, 45, 46, 47, 50, 51, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 113, 122, 123
+Lag2Negative	66	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 113, 123
+Lag2Negative	67	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 113, 122, 123
+Lag2Negative	68	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 68, 75, 82, 94, 96, 97, 99, 101, 108, 113, 122, 123
+Lag2Negative	69	false	false	false	35, 39, 45, 47, 50, 51, 53, 57, 58, 63, 64, 68, 75, 79, 81, 82, 89, 96, 99, 100, 101, 113, 123
+Lag2Negative	70	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 113, 123
+Lag2Negative	71	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag2Negative	72	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 108, 113, 123
+Lag2Negative	73	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 123
+Lag2Negative	74	false	false	false	28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 73, 74, 75, 76, 81, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Negative	75	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	76	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Negative	77	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 81, 82, 89, 90, 96, 99, 100, 101, 108, 113, 123
+Lag2Negative	78	false	false	false	35, 39, 42, 45, 46, 47, 50, 51, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Negative	79	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 113, 123
+Lag2Negative	80	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 66, 75, 82, 96, 99, 100, 101, 108, 123
+Lag2Negative	81	false	false	false	20, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 71, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Negative	82	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 81, 82, 96, 99, 100, 101, 108, 113, 122, 123
+Lag2Negative	83	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 71, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag2Negative	84	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 123
+Lag2Negative	85	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 117, 122, 123
+Lag2Negative	86	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	87	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Negative	88	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	89	false	false	false	28, 35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 122, 123
+Lag2Negative	90	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	91	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 123
+Lag2Negative	92	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	93	false	false	false	27, 35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 108, 123
+Lag2Negative	94	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	95	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Negative	96	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 102, 108, 123
+Lag2Negative	97	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 76, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag2Negative	98	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	99	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag2Negative	100	false	false	false	35, 36, 39, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 76, 82, 90, 96, 97, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Baseline	1	true	false	false	44, 57, 63, 99, 113
+Lag8Baseline	2	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	3	true	false	false	44, 57, 63, 99, 113
+Lag8Baseline	4	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	5	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	6	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	7	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	8	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	9	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	10	true	false	false	44, 57, 63, 99, 113
+Lag8Baseline	11	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	12	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	13	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	14	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Baseline	15	true	false	false	45, 57, 63, 99, 113
+Lag8Baseline	16	true	false	false	45, 57, 63, 99, 113
+Lag8Baseline	17	true	false	false	45, 57, 63, 99, 113
+Lag8Baseline	18	true	false	false	45, 57, 63, 99, 113
+Lag8Baseline	19	true	false	false	45, 57, 63, 99, 113
+Lag8Baseline	20	true	false	false	45, 57, 63, 99, 113
+Lag8Baseline	21	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	22	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	23	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	24	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	25	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	26	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	27	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	28	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	29	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	30	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	31	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	32	true	false	false	45, 50, 57, 58, 60, 63, 64, 99, 101, 113
+Lag8Baseline	33	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	34	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag8Baseline	35	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	36	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	37	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	38	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Baseline	39	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag8Baseline	40	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag8Baseline	41	true	false	false	42, 45, 50, 57, 58, 63, 64, 99, 113
+Lag8Baseline	42	true	false	false	45, 50, 57, 58, 63, 99, 113
+Lag8Baseline	43	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag8Baseline	44	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113, 122
+Lag8Baseline	45	false	false	false	35, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 90, 99, 101, 102, 113, 122
+Lag8Baseline	46	true	false	false	45, 50, 57, 58, 63, 64, 99, 102, 113
+Lag8Baseline	47	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag8Baseline	48	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag8Baseline	49	false	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 102, 113
+Lag8Baseline	50	false	false	false	45, 47, 50, 51, 57, 58, 63, 64, 75, 90, 99, 101, 102, 113
+Lag8Baseline	51	false	false	false	35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 90, 91, 96, 99, 101, 102, 113, 122
+Lag8Baseline	52	false	false	false	35, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 82, 89, 90, 99, 101, 102, 113
+Lag8Baseline	53	false	false	false	35, 40, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 99, 101, 102, 113, 122
+Lag8Baseline	54	true	false	false	45, 50, 57, 58, 63, 64, 75, 99, 102, 113
+Lag8Baseline	55	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag8Baseline	56	false	false	false	35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 90, 99, 101, 102, 113, 122
+Lag8Baseline	57	false	false	false	28, 35, 36, 39, 45, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 88, 89, 90, 94, 96, 99, 101, 102, 113, 122
+Lag8Baseline	58	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 82, 89, 99, 101, 113
+Lag8Baseline	59	false	false	false	35, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 90, 99, 101, 113
+Lag8Baseline	60	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 73, 75, 81, 82, 88, 96, 99, 101, 113, 122
+Lag8Baseline	61	false	false	false	39, 45, 50, 57, 58, 63, 64, 75, 79, 82, 96, 99, 101, 113, 122, 123
+Lag8Baseline	62	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Baseline	63	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 113, 123
+Lag8Baseline	64	false	false	false	35, 39, 45, 46, 50, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 102, 113, 123
+Lag8Baseline	65	false	false	false	35, 39, 40, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 122, 123
+Lag8Baseline	66	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Baseline	67	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 113, 123
+Lag8Baseline	68	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Baseline	69	false	false	false	35, 39, 45, 46, 47, 50, 51, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 113, 123
+Lag8Baseline	70	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 113, 123
+Lag8Baseline	71	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 108, 113, 123
+Lag8Baseline	72	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 113, 122, 123
+Lag8Baseline	73	false	false	false	35, 39, 45, 46, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 113, 123
+Lag8Baseline	74	false	false	false	33, 35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	75	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Baseline	76	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag8Baseline	77	false	false	false	24, 28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 89, 90, 91, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Baseline	78	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	79	false	false	false	33, 35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Baseline	80	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag8Baseline	81	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 68, 74, 75, 81, 82, 90, 96, 99, 100, 101, 102, 108, 110, 113, 117, 122, 123
+Lag8Baseline	82	false	false	false	35, 39, 42, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	83	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 108, 123
+Lag8Baseline	84	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 53, 57, 58, 59, 60, 63, 64, 68, 74, 75, 76, 79, 81, 82, 89, 90, 96, 97, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Baseline	85	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	86	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 89, 90, 96, 99, 100, 101, 102, 108, 122, 123
+Lag8Baseline	87	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 100, 101, 102, 108, 122, 123
+Lag8Baseline	88	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	89	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 79, 82, 90, 96, 99, 100, 101, 102, 108, 122, 123
+Lag8Baseline	90	false	false	false	34, 35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Baseline	91	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Baseline	92	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Baseline	93	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	94	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 102, 108, 113, 123
+Lag8Baseline	95	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Baseline	96	false	false	false	35, 39, 42, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Baseline	97	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	98	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 79, 81, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Baseline	99	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 89, 96, 99, 100, 101, 102, 108, 123
+Lag8Baseline	100	false	false	false	28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Neutral	1	true	false	false	44, 57, 63, 99, 113
+Lag8Neutral	2	true	false	false	44, 57, 63, 99, 113
+Lag8Neutral	3	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	4	true	false	false	44, 57, 63, 99, 113
+Lag8Neutral	5	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	6	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	7	true	false	false	44, 57, 63, 99, 113
+Lag8Neutral	8	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	9	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	10	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	11	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	12	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	13	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	14	true	false	false	44, 57, 63, 99, 113
+Lag8Neutral	15	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	16	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Neutral	17	false	false	false	35, 45, 49, 57, 63, 68, 69, 72, 73, 74, 75, 81, 88, 89, 94, 99, 113, 122
+Lag8Neutral	18	true	false	false	45, 57, 63, 94, 99, 113
+Lag8Neutral	19	true	false	false	45, 57, 63, 99, 113
+Lag8Neutral	20	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	21	true	false	false	45, 50, 57, 63, 67, 99, 113
+Lag8Neutral	22	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	23	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	24	false	false	true	45, 50, 57, 63, 99, 113, 125
+Lag8Neutral	25	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	26	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	27	true	false	false	45, 49, 50, 57, 63, 99, 113
+Lag8Neutral	28	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	29	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	30	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	31	true	false	false	45, 50, 51, 57, 60, 63, 64, 90, 99, 113
+Lag8Neutral	32	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	33	true	false	false	45, 50, 57, 63, 99, 101, 113
+Lag8Neutral	34	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	35	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	36	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	37	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag8Neutral	38	true	false	false	45, 50, 57, 63, 99, 101, 113
+Lag8Neutral	39	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag8Neutral	40	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Neutral	41	true	false	false	33, 45, 50, 57, 58, 63, 64, 99, 113
+Lag8Neutral	42	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag8Neutral	43	true	false	false	45, 50, 51, 57, 58, 63, 64, 99, 113
+Lag8Neutral	44	true	false	false	42, 45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag8Neutral	45	false	false	false	20, 21, 24, 28, 29, 35, 36, 40, 42, 45, 47, 50, 51, 52, 55, 57, 58, 63, 64, 71, 74, 75, 76, 78, 79, 81, 82, 85, 86, 90, 91, 96, 97, 99, 100, 101, 102, 113, 115, 117, 122
+Lag8Neutral	46	false	false	false	45, 50, 57, 58, 63, 64, 75, 81, 90, 99, 101, 102, 113, 122
+Lag8Neutral	47	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag8Neutral	48	false	false	false	35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 89, 90, 99, 101, 102, 113, 122
+Lag8Neutral	49	false	false	false	35, 45, 47, 50, 51, 57, 58, 63, 64, 75, 82, 99, 101, 113
+Lag8Neutral	50	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 89, 90, 99, 101, 102, 113
+Lag8Neutral	51	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 82, 99, 101, 113
+Lag8Neutral	52	false	false	false	35, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 90, 96, 99, 101, 102, 113, 122
+Lag8Neutral	53	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 113
+Lag8Neutral	54	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113
+Lag8Neutral	55	false	false	false	35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 102, 113
+Lag8Neutral	56	false	false	false	35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 113
+Lag8Neutral	57	false	false	false	35, 36, 39, 40, 45, 47, 50, 51, 52, 57, 58, 59, 63, 64, 75, 82, 89, 90, 96, 99, 101, 102, 113, 123
+Lag8Neutral	58	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113
+Lag8Neutral	59	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Neutral	60	false	false	false	35, 45, 47, 50, 52, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 101, 102, 113, 123
+Lag8Neutral	61	false	false	false	35, 37, 39, 45, 47, 50, 51, 52, 57, 58, 59, 63, 64, 74, 75, 81, 82, 89, 90, 96, 97, 99, 100, 101, 102, 113, 122, 123
+Lag8Neutral	62	false	false	false	35, 39, 45, 50, 57, 58, 63, 64, 75, 82, 90, 96, 97, 99, 101, 113, 123
+Lag8Neutral	63	false	false	false	24, 28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 97, 99, 100, 101, 102, 113, 122, 123
+Lag8Neutral	64	false	false	false	35, 36, 39, 45, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 113, 122, 123
+Lag8Neutral	65	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 113, 123
+Lag8Neutral	66	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Neutral	67	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 113, 122, 123
+Lag8Neutral	68	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 117, 123
+Lag8Neutral	69	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 113, 123
+Lag8Neutral	70	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 113, 123
+Lag8Neutral	71	false	false	false	35, 39, 45, 46, 47, 50, 51, 53, 57, 58, 63, 64, 74, 75, 76, 81, 82, 89, 90, 96, 99, 101, 102, 108, 113, 122, 123
+Lag8Neutral	72	false	false	false	33, 35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag8Neutral	73	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Neutral	74	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 81, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Neutral	75	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Neutral	76	false	false	false	24, 28, 29, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 59, 63, 64, 71, 72, 74, 75, 76, 79, 81, 82, 89, 90, 91, 96, 97, 99, 100, 101, 102, 108, 113, 117, 122, 123
+Lag8Neutral	77	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 108, 113, 123
+Lag8Neutral	78	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 89, 90, 96, 99, 100, 101, 108, 123
+Lag8Neutral	79	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 97, 99, 100, 101, 102, 108, 113, 123
+Lag8Neutral	80	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 123
+Lag8Neutral	81	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	82	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 97, 99, 100, 101, 108, 123, 127
+Lag8Neutral	83	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Neutral	84	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 97, 99, 101, 108, 122, 123
+Lag8Neutral	85	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 123
+Lag8Neutral	86	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	87	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	88	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 113, 123
+Lag8Neutral	89	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	90	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 76, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	91	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	92	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	93	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 76, 82, 96, 99, 101, 102, 108, 113, 123
+Lag8Neutral	94	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	95	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Neutral	96	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 108, 123
+Lag8Neutral	97	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	98	false	false	false	35, 36, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Neutral	99	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Neutral	100	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 108, 113, 123
+Lag8Negative	1	true	false	false	44, 45, 57, 63, 99, 113, 120
+Lag8Negative	2	true	false	false	44, 57, 63, 99, 113
+Lag8Negative	3	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	4	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	5	false	false	true	44, 45, 57, 63, 99, 113, 125
+Lag8Negative	6	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	7	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	8	true	false	false	44, 57, 63, 99, 113
+Lag8Negative	9	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	10	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	11	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	12	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	13	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	14	true	false	false	44, 45, 57, 63, 99, 113
+Lag8Negative	15	true	false	false	44, 57, 63, 99, 113
+Lag8Negative	16	true	false	false	45, 57, 63, 99, 113
+Lag8Negative	17	true	false	false	45, 57, 63, 99, 113
+Lag8Negative	18	true	false	false	45, 57, 63, 99, 113
+Lag8Negative	19	true	false	false	45, 57, 63, 99, 113
+Lag8Negative	20	true	false	false	45, 57, 63, 99, 113
+Lag8Negative	21	true	false	false	45, 57, 63, 99, 113
+Lag8Negative	22	true	false	false	25, 45, 50, 57, 63, 99, 113
+Lag8Negative	23	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	24	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	25	true	false	false	45, 50, 57, 60, 63, 64, 99, 113
+Lag8Negative	26	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	27	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	28	true	false	false	45, 50, 57, 63, 94, 99, 113
+Lag8Negative	29	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag8Negative	30	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	31	true	false	false	45, 50, 57, 63, 99, 101, 113
+Lag8Negative	32	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	33	false	false	false	45, 47, 50, 51, 57, 58, 60, 63, 64, 99, 113
+Lag8Negative	34	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	35	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	36	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	37	true	false	false	45, 50, 57, 63, 64, 84, 89, 94, 99, 113
+Lag8Negative	38	true	false	false	45, 50, 57, 63, 99, 113
+Lag8Negative	39	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 90, 99, 101, 113
+Lag8Negative	40	true	false	false	45, 50, 57, 63, 64, 99, 113
+Lag8Negative	41	false	false	false	42, 45, 49, 50, 57, 58, 63, 64, 68, 69, 73, 74, 81, 90, 99, 101, 113, 122
+Lag8Negative	42	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag8Negative	43	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag8Negative	44	true	false	false	45, 47, 50, 57, 58, 63, 64, 99, 101, 113
+Lag8Negative	45	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+Lag8Negative	46	true	false	false	42, 45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag8Negative	47	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag8Negative	48	false	false	false	45, 50, 57, 58, 63, 64, 67, 89, 99, 102, 113
+Lag8Negative	49	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+Lag8Negative	50	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+Lag8Negative	51	false	false	false	45, 50, 57, 58, 63, 64, 75, 81, 90, 99, 101, 102, 113
+Lag8Negative	52	true	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag8Negative	53	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag8Negative	54	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 90, 99, 101, 102, 113
+Lag8Negative	55	false	false	false	35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 99, 101, 113, 122
+Lag8Negative	56	false	false	false	35, 45, 49, 50, 57, 58, 63, 64, 75, 99, 101, 113, 122
+Lag8Negative	57	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+Lag8Negative	58	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 96, 99, 101, 102, 113
+Lag8Negative	59	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 82, 89, 96, 99, 101, 113
+Lag8Negative	60	false	false	false	33, 35, 45, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113
+Lag8Negative	61	false	false	false	35, 39, 45, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Negative	62	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 101, 102, 113, 123
+Lag8Negative	63	false	false	false	35, 45, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Negative	64	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 122, 123
+Lag8Negative	65	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 113, 122, 123
+Lag8Negative	66	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 113, 122, 123
+Lag8Negative	67	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 113, 123
+Lag8Negative	68	false	false	false	35, 39, 45, 47, 50, 51, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Negative	69	false	false	false	33, 35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Negative	70	false	false	false	35, 39, 45, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+Lag8Negative	71	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 68, 75, 81, 82, 96, 99, 101, 113, 123
+Lag8Negative	72	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 122, 123, 126, 127
+Lag8Negative	73	false	false	false	35, 39, 45, 46, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	74	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	75	false	false	false	35, 39, 45, 46, 47, 50, 51, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 113, 123
+Lag8Negative	76	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Negative	77	false	false	false	35, 39, 45, 46, 47, 50, 52, 53, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	78	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	79	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	80	false	false	false	35, 39, 42, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	81	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 123
+Lag8Negative	82	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 123
+Lag8Negative	83	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 108, 123
+Lag8Negative	84	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	85	false	false	false	23, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+Lag8Negative	86	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	87	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	88	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	89	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	90	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 89, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	91	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	92	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	93	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	94	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	95	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 123
+Lag8Negative	96	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	97	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	98	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 113, 123
+Lag8Negative	99	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 102, 108, 123
+Lag8Negative	100	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+L2NCorrect	1	true	false	false	44, 57, 63, 99, 113
+L2NCorrect	2	true	false	false	44, 57, 63, 99, 113
+L2NCorrect	3	true	false	false	44, 45, 57, 63, 99, 113
+L2NCorrect	4	true	false	false	44, 45, 57, 63, 99, 113
+L2NCorrect	5	true	false	false	44, 45, 57, 63, 99, 113
+L2NCorrect	6	true	false	false	44, 57, 63, 99, 113
+L2NCorrect	7	true	false	false	44, 45, 57, 63, 99, 113
+L2NCorrect	8	true	false	false	44, 45, 57, 63, 99, 113
+L2NCorrect	9	true	false	false	44, 45, 57, 63, 99, 113
+L2NCorrect	10	true	false	false	45, 57, 63, 99, 113
+L2NCorrect	11	true	false	false	45, 57, 63, 99, 113
+L2NCorrect	12	true	false	false	45, 57, 63, 99, 113
+L2NCorrect	13	true	false	false	45, 57, 63, 99, 113
+L2NCorrect	14	true	false	false	45, 50, 57, 63, 64, 67, 68, 69, 99, 113
+L2NCorrect	15	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	16	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	17	true	false	false	45, 50, 57, 63, 64, 99, 101, 113
+L2NCorrect	18	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	19	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	20	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	21	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	22	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	23	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	24	false	false	false	45, 47, 50, 57, 58, 63, 64, 90, 99, 101, 113, 122
+L2NCorrect	25	true	false	false	45, 50, 57, 63, 99, 113
+L2NCorrect	26	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+L2NCorrect	27	true	false	false	45, 50, 57, 63, 64, 99, 113
+L2NCorrect	28	false	false	false	42, 45, 47, 50, 57, 58, 63, 64, 68, 69, 73, 75, 81, 94, 99, 101, 113, 122
+L2NCorrect	29	true	false	false	36, 45, 50, 57, 58, 63, 64, 99, 101, 113
+L2NCorrect	30	true	false	false	45, 50, 57, 58, 63, 64, 99, 113
+L2NCorrect	31	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+L2NCorrect	32	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+L2NCorrect	33	false	false	false	35, 45, 50, 57, 58, 63, 64, 90, 99, 101, 102, 113
+L2NCorrect	34	false	false	false	28, 35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 82, 90, 91, 96, 99, 101, 102, 113, 122, 123
+L2NCorrect	35	true	false	false	35, 45, 50, 57, 58, 63, 64, 99, 101, 113
+L2NCorrect	36	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 113
+L2NCorrect	37	false	false	false	35, 40, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 90, 96, 99, 101, 102, 113
+L2NCorrect	38	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113
+L2NCorrect	39	false	false	false	35, 39, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 90, 96, 97, 99, 101, 102, 113, 123
+L2NCorrect	40	false	false	false	35, 39, 45, 46, 47, 50, 51, 57, 58, 63, 64, 75, 82, 90, 96, 99, 101, 113, 122, 123
+L2NCorrect	41	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 68, 75, 82, 94, 96, 97, 99, 101, 108, 113, 122, 123
+L2NCorrect	42	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 81, 82, 90, 96, 99, 100, 101, 108, 113, 123
+L2NCorrect	43	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 75, 82, 89, 96, 99, 100, 101, 102, 108, 123
+L2NCorrect	44	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+L2NCorrect	45	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 81, 82, 89, 90, 96, 99, 100, 101, 108, 113, 123
+L2NCorrect	46	false	false	false	35, 39, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 66, 75, 82, 96, 99, 100, 101, 108, 123
+L2NCorrect	47	false	false	false	20, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 71, 74, 75, 76, 81, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+L2NCorrect	48	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 81, 82, 96, 99, 100, 101, 108, 113, 122, 123
+L2NCorrect	49	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+L2NCorrect	50	false	false	false	28, 35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 122, 123
+L2NCorrect	51	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+L2NCorrect	52	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+L2NCorrect	53	false	false	false	27, 35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 108, 123
+L2NCorrect	54	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 123
+L2NCorrect	55	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+L2NCorrect	56	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 101, 102, 108, 123
+L2NIncorrect	1	true	false	false	44, 45, 57, 63, 99, 113
+L2NIncorrect	2	true	false	false	44, 45, 57, 63, 99, 113
+L2NIncorrect	3	true	false	false	44, 57, 63, 99, 113
+L2NIncorrect	4	true	false	false	44, 57, 63, 99, 113
+L2NIncorrect	5	true	false	false	44, 45, 57, 63, 99, 113
+L2NIncorrect	6	true	false	false	44, 45, 57, 63, 99, 113
+L2NIncorrect	7	true	false	false	45, 57, 63, 99, 113
+L2NIncorrect	8	true	false	false	45, 50, 57, 63, 99, 113
+L2NIncorrect	9	true	false	false	45, 50, 57, 63, 99, 113
+L2NIncorrect	10	true	false	false	45, 50, 57, 63, 99, 113
+L2NIncorrect	11	true	false	false	45, 50, 57, 63, 99, 113
+L2NIncorrect	12	true	false	false	45, 50, 57, 63, 99, 113
+L2NIncorrect	13	true	false	false	45, 50, 57, 58, 59, 63, 64, 99, 113, 122
+L2NIncorrect	14	true	false	false	45, 47, 50, 57, 58, 63, 64, 99, 113
+L2NIncorrect	15	true	false	false	45, 47, 50, 57, 58, 63, 64, 99, 101, 113
+L2NIncorrect	16	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+L2NIncorrect	17	true	false	false	10, 45, 50, 57, 58, 63, 64, 99, 102, 113
+L2NIncorrect	18	true	false	false	45, 50, 57, 58, 63, 64, 99, 101, 102, 113
+L2NIncorrect	19	true	false	false	45, 50, 57, 58, 63, 64, 75, 99, 101, 113
+L2NIncorrect	20	false	false	false	35, 36, 45, 47, 50, 51, 57, 58, 63, 64, 75, 82, 89, 90, 99, 101, 113
+L2NIncorrect	21	false	false	false	28, 35, 36, 45, 47, 50, 51, 52, 57, 58, 63, 64, 75, 81, 82, 90, 96, 99, 101, 102, 113, 122
+L2NIncorrect	22	false	false	false	35, 45, 47, 50, 57, 58, 63, 64, 75, 99, 101, 113
+L2NIncorrect	23	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 90, 96, 97, 99, 101, 113, 123
+L2NIncorrect	24	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 113, 122, 123
+L2NIncorrect	25	false	false	false	35, 39, 45, 47, 50, 52, 57, 58, 63, 64, 75, 82, 96, 99, 101, 113, 123
+L2NIncorrect	26	false	false	false	35, 39, 45, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 113, 123
+L2NIncorrect	27	false	false	false	35, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 113, 122, 123
+L2NIncorrect	28	false	false	false	35, 39, 45, 47, 50, 51, 53, 57, 58, 63, 64, 68, 75, 79, 81, 82, 89, 96, 99, 100, 101, 113, 123
+L2NIncorrect	29	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 113, 123
+L2NIncorrect	30	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 102, 108, 113, 123
+L2NIncorrect	31	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 100, 101, 108, 123
+L2NIncorrect	32	false	false	false	28, 35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 73, 74, 75, 76, 81, 82, 89, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+L2NIncorrect	33	false	false	false	35, 39, 42, 45, 46, 47, 50, 51, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+L2NIncorrect	34	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 75, 82, 96, 99, 101, 108, 113, 123
+L2NIncorrect	35	false	false	false	35, 36, 39, 40, 45, 46, 47, 50, 51, 52, 57, 58, 63, 64, 71, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 122, 123
+L2NIncorrect	36	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 123
+L2NIncorrect	37	false	false	false	35, 39, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 82, 90, 96, 99, 100, 101, 102, 108, 117, 122, 123
+L2NIncorrect	38	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 113, 123
+L2NIncorrect	39	false	false	false	35, 39, 40, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 76, 82, 90, 96, 99, 100, 101, 102, 108, 123
+L2NIncorrect	40	false	false	false	35, 39, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 96, 99, 100, 101, 108, 123
+L2NIncorrect	41	false	false	false	35, 39, 40, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 76, 82, 96, 99, 100, 101, 102, 108, 113, 123
+L2NIncorrect	42	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+L2NIncorrect	43	false	false	false	35, 39, 40, 42, 45, 46, 47, 50, 57, 58, 63, 64, 74, 75, 82, 90, 96, 99, 100, 101, 102, 108, 123
+L2NIncorrect	44	false	false	false	35, 36, 39, 42, 45, 46, 47, 50, 52, 57, 58, 63, 64, 75, 76, 82, 90, 96, 97, 99, 100, 101, 102, 108, 113, 122, 123

@@ -11,6 +11,18 @@ library(ez)
 library(tidyr)
 ```
 
+
+# Subject Exclusions
+
+We are removing subjects who do not have at least 50% good segments.
+
+```{r}
+subject.segment.log <- read_csv('data/tidy/eeg-segment-count.csv')
+good.subjects <- subject.segment.log %>%
+  filter(P >= 0.5) %>%
+  pull(Subject)
+```
+
 # Behavioral Data
 
 Graph
@@ -49,7 +61,8 @@ We start by loading in the tidy EEG data. See the `generate-tidy-eeg-data.R` fil
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 # use progress=FALSE because progress bar seems to slow down read_csv in R notebooks.
-eeg.data <- read_csv('data/tidy/eeg-data-tidy.csv', progress= FALSE)
+eeg.data <- read_csv('data/tidy/eeg-data-tidy.csv', progress= FALSE) %>%
+  filter(subject %in% good.subjects)
 ```
 
 ## N2

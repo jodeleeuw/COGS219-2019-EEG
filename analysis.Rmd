@@ -16,20 +16,25 @@ library(tidyr)
 
 We are removing subjects who do not have at least 50% good segments.
 
-```{r}
+```{r message=FALSE, warning=FALSE}
 subject.segment.log <- read_csv('data/tidy/eeg-segment-count.csv')
 good.subjects <- subject.segment.log %>%
-  filter(P >= 0.5) %>%
+  filter(P >= 0.8) %>%
   pull(Subject)
 ```
 
 # Behavioral Data
 
+Loading in the data and filtering to only good subjects.
+
+```{r message=FALSE, warning=FALSE}
+all.behavioral.data <- read_csv('data/tidy/behavioral-data-tidy.csv', progress = FALSE) %>%
+  filter(participant_id %in% good.subjects)
+```
+
 Graph
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-all.behavioral.data <- read_csv('data/tidy/behavioral-data-tidy.csv', progress = FALSE)
-
 subject.level <- all.behavioral.data %>% 
   filter(phase == 'test', target_lag %in% c(2,8)) %>%
   mutate(correct = as.numeric((correct == 'true'))) %>%
@@ -59,7 +64,7 @@ behavioral.anova$ANOVA
 
 We start by loading in the tidy EEG data. See the `generate-tidy-eeg-data.R` file for the pre-processing steps that produced this file.
 
-```{r message=FALSE, warning=FALSE, include=FALSE}
+```{r message=FALSE, warning=FALSE}
 # use progress=FALSE because progress bar seems to slow down read_csv in R notebooks.
 eeg.data <- read_csv('data/tidy/eeg-data-tidy.csv', progress= FALSE) %>%
   filter(subject %in% good.subjects)
@@ -120,7 +125,7 @@ n2.distractor.t.test.data <- n2.distractor.anova.data %>%
 Is negative less than neutral?
 
 ```{r}
-t.test(peak ~ distractor.condition, data=n2.distractor.t.test.data, alternative=c("less"))
+t.test(peak ~ distractor.condition, data=n2.distractor.t.test.data, alternative="less")
 ```
 
 
@@ -148,7 +153,8 @@ n2.distractor.t.test.data %>%
 Basic plotting of the ERPs. (You should make a better plot than this!)
 This is analogous to Figure 3.
 
-```{r echo=FALSE}
+
+```{r echo=FALSE, warning=FALSE}
 n2.distractor.erp <- n2.distractor.difference.waves %>%
   group_by(distractor.condition, t) %>%
   summarize(M = mean(difference.wave))
@@ -156,8 +162,13 @@ n2.distractor.erp <- n2.distractor.difference.waves %>%
 ggplot(n2.distractor.erp, aes(x=t, y=M, color=distractor.condition))+
   geom_line()+
   geom_vline(xintercept = 0)+
+  scale_y_reverse()+
+  scale_x_continuous(limits = c(-200,1000), expand=c(0,0))+
+  annotate("rect", xmin=185,xmax=275,ymin=-1,ymax=2.5, alpha=0.2)+
   theme_bw()
 ```
+
+*Note that it is weird that the average waveforms in the target window are positive, but the t-tests for peak negative amplitude in this window are significantly below 0! Why might that happen, and what does it potentially say about peak negative amplitude as a way of establishing whether there is a significantly below 0 effect?*
 
 ### Target Pictures
 
@@ -174,7 +185,7 @@ n2.target.difference.waves <- n2.target.data %>%
   select(-Lag2, -Lag8)
 ```
 
-ANOVA on mean difference (Kennedy et al. are not clear about whether this should be peak or mean...) in the time window 405-585ms after distractor.
+ANOVA on **mean** difference (Kennedy et al. are not clear about whether this should be peak or mean...) in the time window 405-585ms after distractor.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 n2.target.anova.data <- n2.target.difference.waves %>%
@@ -224,7 +235,7 @@ t.test(M ~ distractor.condition,
 
 Basic plot (Figure 4)
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE}
 n2.target.plotting.data <- n2.target.difference.waves %>% 
   group_by(distractor.condition, t) %>%
   summarize(M=mean(difference.wave))
@@ -233,6 +244,9 @@ ggplot(n2.target.plotting.data,  aes(x=t, y=M, color=distractor.condition))+
   geom_line()+
   geom_vline(xintercept=0)+
   geom_vline(xintercept=200)+
+  scale_y_reverse()+
+  scale_x_continuous(limits = c(-200,800), expand=c(0,0))+
+  annotate("rect", xmin=405,xmax=585,ymin=-3.5,ymax=1, alpha=0.2)+
   theme_bw()
 ```
 
@@ -304,12 +318,17 @@ p3b.target.plot.data <- p3b.target.difference.waves %>%
   summarize(M = mean(M.difference.wave))
 
 ggplot(p3b.target.plot.data, aes(x=t,y=M, color=distractor.condition))+
-  geom_line()
+  geom_line()+
+  scale_y_reverse()+
+  scale_x_continuous(limits = c(-200,1200), expand=c(0,0))+
+  annotate("rect", xmin=635,xmax=995,ymin=-4,ymax=5, alpha=0.2)+
+  theme_bw()
 ```
 
 ### Distractor Pictures
 
 Subtract Lag 8 Baseline from Lag 8 Neg and Neu. Time window: 400-550ms.
+Then merge in lag 2 baseline - lag 8 baseline. *Note that this means the baseline condition is looking at something different than the other conditions.*
 
 ```{r}
 p3b.distractor.data <- eeg.data %>%
@@ -353,10 +372,6 @@ p3b.distractor.anova$ANOVA
 
 Post-hoc tests
 
-```{r}
-plot(M ~ factor(distractor.condition), data=p3b.distractor.anova.data)
-```
-
 Is Baseline GREATER than Neutral?
 
 ```{r echo=FALSE}
@@ -386,13 +401,17 @@ t.test(M ~ distractor.condition,
 
 Plot (Figure 6)
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE}
 p3b.distractor.plot.data <- p3b.distractor.difference.waves %>%
   group_by(distractor.condition, t) %>%
   summarize(M=mean(difference.wave))
 
 ggplot(p3b.distractor.plot.data, aes(x=t, y=M, color=distractor.condition))+
-  geom_line()
+  geom_line()+
+  scale_y_reverse()+
+  scale_x_continuous(limits = c(-200,1000), expand=c(0,0))+
+  annotate("rect", xmin=400,xmax=550,ymin=-2,ymax=3, alpha=0.2)+
+  theme_bw()
 ```
 
 ## Posterior Positivity
@@ -438,54 +457,146 @@ pp.data.t.test <- pp.data.anova %>%
   summarize(M= mean(M))
 ```
 
-Is Baseline GREATER than Neutral?
-
-```{r echo=FALSE}
-t.test(M ~ distractor.condition, 
-       data = (p3b.target.anova.data %>% filter(distractor.condition != "Negative")),
-       paired = TRUE,
-       alternative="greater")
-```
 
 Plot (Figure 7)
 
-```{r echo=FALSE}
+```{r echo=FALSE, warning=FALSE}
 pp.data.plot <- pp.difference.waves %>%
   group_by(t, distractor.condition) %>%
   summarize(M = mean(difference.wave))
 
 ggplot(pp.data.plot, aes(x=t, y=M, color=distractor.condition))+
-  geom_line()
+  geom_line()+
+  scale_y_reverse()+
+  scale_x_continuous(limits = c(-200,800), expand=c(0,0))+
+  annotate("rect", xmin=405,xmax=615,ymin=-1,ymax=2, alpha=0.2)+
+  theme_bw()
+  
 ```
 
 ## Correct vs. Incorrect
 
 Load the segmented data for correct v. incorrect. Only looking at Lag 2 negative distractor condition, because that's where most errors are!
 
-```{r}
-eeg.data.correct.incorrect <- read_csv('data/tidy/eeg-data-correct-incorrect-tidy.csv')
+```{r message=FALSE, warning=FALSE}
+eeg.data.correct.incorrect <- read_csv('data/tidy/eeg-data-correct-incorrect-tidy.csv', progress=FALSE) %>% 
+  filter(subject %in% good.subjects)
 ```
 
 ### Distractor N2 and Posterior Positivity
 
+Finding difference wave (correct trials - incorrect trials)
 
-#### N2
+```{r}
+# NOTE: Kennedy et al. are ambiguous about which electrodes are the correct set here. They state that it is the same as the prior electrode set, but used slightly different electrode sets for the N2 and PP analyses. The list of electrodes may need to change.
 
-Same sensors as previous N2. Time window 250-350.
+n2.pp.correct.incorrect <- eeg.data.correct.incorrect %>%
+  filter(electrode %in% c(64,68,69,89,94,95))
 
-t-test between left/right hemisphere on the difference wave between L/R.
+n2.pp.correct.incorrect.difference.wave <- n2.pp.correct.incorrect %>%
+  spread(correct.condition, voltage) %>%
+  mutate(difference.wave = Correct - Incorrect) %>%
+  select(-Correct, -Incorrect)
+```
 
-one sample t-test against 0 for difference wave.
+Time window 250-350ms for N2. One sample t-test: Is difference wave significantly greater than 0?
 
+```{r echo=FALSE}
+n2.pp.correct.incorrect.difference.wave %>%
+  filter(t %in% 250:350) %>%
+  group_by(subject) %>%
+  summarize(M = mean(difference.wave)) %>%
+  pull(M) %>%
+  t.test(mu=0, alternative = "greater")
+```
 
-#### PP
+Time window 410-650ms for posterior positivity. Is difference wave significantly less than 0?
 
-same sensors as ??. Unclear!
+```{r echo=FALSE}
+n2.pp.correct.incorrect.difference.wave %>%
+  filter(t %in% 410:650) %>%
+  group_by(subject) %>%
+  summarize(M = mean(difference.wave)) %>%
+  pull(M) %>%
+  t.test(mu=0, alternative = "less")
+```
 
-410-650ms after distractor.
+Plot
 
-one-sample t-test on the difference.
+*Quick Note: Kennedy et al.'s plot of the difference curve is inverted for some reason (i.e., positive values are plotted as negative values) so even though our pattern looks like the opposite, it is actually in the same direction.*
 
+```{r echo=FALSE, warning=FALSE}
+n2.pp.correct.incorrect.plot.data <- n2.pp.correct.incorrect %>%
+  group_by(correct.condition, t) %>%
+  summarize(M = mean(voltage))
 
+n2.pp.correct.incorrect.difference.wave.plot.data <- n2.pp.correct.incorrect.difference.wave %>%
+  group_by(t) %>%
+  summarize(M = mean(difference.wave))
+
+ggplot(n2.pp.correct.incorrect.plot.data, aes(x=t,y=M,color=correct.condition))+
+  geom_line()+
+  geom_line(data=n2.pp.correct.incorrect.difference.wave.plot.data, aes(color=NA))+
+  scale_y_reverse()+
+  scale_x_continuous(limits = c(-200,800), expand=c(0,0))+
+  annotate("rect", xmin=250,xmax=350,ymin=-8,ymax=2, alpha=0.2)+
+  annotate("rect", xmin=410,xmax=650,ymin=-8,ymax=2, alpha=0.2)+
+  theme_bw()
+```
 
 ### Distractor and Target P3b
+
+Finding difference wave (correct trials - incorrect trials)
+
+```{r}
+p3b.correct.incorrect <- eeg.data.correct.incorrect %>%
+  filter(electrode %in% c(54,55,79,78,61,62))
+
+p3b.correct.incorrect.difference.wave <- p3b.correct.incorrect %>%
+  spread(correct.condition, voltage) %>%
+  mutate(difference.wave = Correct - Incorrect) %>%
+  select(-Correct, -Incorrect)
+```
+
+Time window 400-550ms. Is difference wave significantly less than 0?
+
+```{r echo=FALSE}
+p3b.correct.incorrect.difference.wave %>%
+  filter(t %in% 400:550) %>%
+  group_by(subject) %>%
+  summarize(M = mean(difference.wave)) %>%
+  pull(M) %>%
+  t.test(mu=0, alternative = "less")
+```
+
+Time window 635-995ms. Is difference wave significantly greater than 0?
+
+```{r echo=FALSE}
+p3b.correct.incorrect.difference.wave %>%
+  filter(t %in% 635:995) %>%
+  group_by(subject) %>%
+  summarize(M = mean(difference.wave)) %>%
+  pull(M) %>%
+  t.test(mu=0, alternative = "greater")
+```
+
+Plot
+
+```{r echo=FALSE}
+p3b.correct.incorrect.plot.data <- p3b.correct.incorrect %>%
+  group_by(correct.condition, t) %>%
+  summarize(M = mean(voltage))
+
+p3b.correct.incorrect.difference.wave.plot.data <- p3b.correct.incorrect.difference.wave %>%
+  group_by(t) %>%
+  summarize(M = mean(difference.wave))
+
+ggplot(p3b.correct.incorrect.plot.data, aes(x=t,y=M,color=correct.condition))+
+  geom_line()+
+  geom_line(data=p3b.correct.incorrect.difference.wave.plot.data, aes(color=NA))+
+  scale_y_reverse()+
+  scale_x_continuous(limits = c(-200,1200), expand=c(0,0))+
+  annotate("rect", xmin=400,xmax=550,ymin=-2,ymax=4, alpha=0.2)+
+  annotate("rect", xmin=635,xmax=995,ymin=-2,ymax=4, alpha=0.2)+
+  theme_bw()
+```

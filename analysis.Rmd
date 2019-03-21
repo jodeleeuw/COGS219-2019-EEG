@@ -14,7 +14,7 @@ library(tidyr)
 
 # Subject Exclusions
 
-We are removing subjects who do not have at least 50% good segments.
+We are removing subjects who do not have at least 80% good segments.
 
 ```{r message=FALSE, warning=FALSE}
 subject.segment.log <- read_csv('data/tidy/eeg-segment-count.csv')
@@ -34,7 +34,7 @@ all.behavioral.data <- read_csv('data/tidy/behavioral-data-tidy.csv', progress =
 
 Graph
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 subject.level <- all.behavioral.data %>% 
   filter(phase == 'test', target_lag %in% c(2,8)) %>%
   mutate(correct = as.numeric((correct == 'true'))) %>%
@@ -55,7 +55,7 @@ ggplot(summary.data, aes(x=target_lag, y=M, color=distractor_type, group=distrac
 
 ANOVA
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 behavioral.anova <- ezANOVA(subject.level, dv=accuracy, wid=participant_id, within=c(target_lag, distractor_type))
 behavioral.anova$ANOVA
 ```
@@ -98,7 +98,7 @@ n2.distractor.difference.waves <- n2.distractor.data %>%
 
 A two-factor ANOVA (hemisphere x distractor type) in the time window 185-275ms, on peak negative amplitude. (First average over hemisphere, then find peak)
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 n2.distractor.anova.data <- n2.distractor.difference.waves %>%
   filter(t %in% 185:275) %>%
   group_by(subject, hemisphere, distractor.condition, t) %>%
@@ -124,8 +124,10 @@ n2.distractor.t.test.data <- n2.distractor.anova.data %>%
 
 Is negative less than neutral?
 
+**Note: In an earlier version of this Notebook I neglected to make this a paired t-test!**
+
 ```{r}
-t.test(peak ~ distractor.condition, data=n2.distractor.t.test.data, alternative="less")
+t.test(peak ~ distractor.condition, data=n2.distractor.t.test.data, alternative="less", paired=TRUE)
 ```
 
 
@@ -154,7 +156,7 @@ Basic plotting of the ERPs. (You should make a better plot than this!)
 This is analogous to Figure 3.
 
 
-```{r echo=FALSE, warning=FALSE}
+```{r warning=FALSE}
 n2.distractor.erp <- n2.distractor.difference.waves %>%
   group_by(distractor.condition, t) %>%
   summarize(M = mean(difference.wave))
@@ -187,7 +189,7 @@ n2.target.difference.waves <- n2.target.data %>%
 
 ANOVA on **mean** difference (Kennedy et al. are not clear about whether this should be peak or mean...) in the time window 405-585ms after distractor.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 n2.target.anova.data <- n2.target.difference.waves %>%
   filter(t %in% 405:585) %>%
   group_by(subject, hemisphere, distractor.condition) %>%
@@ -195,20 +197,27 @@ n2.target.anova.data <- n2.target.difference.waves %>%
 
 n2.target.anova <- ezANOVA(n2.target.anova.data, wid=subject, dv=M, within=c(hemisphere, distractor.condition))
 n2.target.anova$ANOVA
-  
 ```
-
 
 Post-hoc tests
 
-```{r echo=FALSE}
+```{r}
 n2.target.t.test.data <- n2.target.anova.data %>%
   group_by(subject, distractor.condition) %>%
   summarize(M=mean(M))
 ```
 
 Baseline vs. Negative. Is Baseline LESS than Negative, one-tailed?
-```{r echo=FALSE}
+
+**Note about the direction of the alternative hypothesis for one-tailed tests.** In R you can specify the alternative as `"less"` or `"greater"` for a one-tailed test. Which one you should choose depends on the order of the factor, i.e., is R subtracting Baseline from Negative, or Negative from Baseline. You can find the order of the factor by typing:
+
+```{r}
+levels(factor(n2.target.t.test.data$distractor.condition))
+```
+
+R will subtract levels that appear later in the list FROM levels that appear earlier in the list. So if we want to know if Negative - Baseline is a positive number (i.e., Baseline is less than Negative) then the alternative has to be `"less"` because R will do the subtraction as Baseline - Negative.
+
+```{r}
 t.test(M ~ distractor.condition, 
        data = (n2.target.t.test.data %>% filter(distractor.condition != "Neutral")),
        paired = TRUE,
@@ -216,7 +225,7 @@ t.test(M ~ distractor.condition,
 ```
 
 Baseline vs. Neutral. Is Baseline LESS than Neural, one tailed?
-```{r echo=FALSE}
+```{r}
 t.test(M ~ distractor.condition, 
        data = (n2.target.t.test.data %>% filter(distractor.condition != "Negative")),
        paired = TRUE,
@@ -225,7 +234,7 @@ t.test(M ~ distractor.condition,
 
 Negative vs. Neutral. Is Neutral LESS than Negative, one tailed?
 
-```{r echo=FALSE}
+```{r}
 t.test(M ~ distractor.condition, 
        data = (n2.target.t.test.data %>% filter(distractor.condition != "Baseline")),
        paired = TRUE,
@@ -235,7 +244,7 @@ t.test(M ~ distractor.condition,
 
 Basic plot (Figure 4)
 
-```{r echo=FALSE, warning=FALSE}
+```{r warning=FALSE}
 n2.target.plotting.data <- n2.target.difference.waves %>% 
   group_by(distractor.condition, t) %>%
   summarize(M=mean(difference.wave))
@@ -270,7 +279,7 @@ p3b.target.difference.waves <- p3b.target.data %>%
 
 ANOVA
 
-```{r echo=FALSE, message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE}
 p3b.target.anova.data <- p3b.target.difference.waves %>%
   filter(t %in% 635:995) %>%
   group_by(subject, distractor.condition) %>%
@@ -284,7 +293,7 @@ Post-hoc tests
 
 Is Baseline GREATER than Neutral?
 
-```{r echo=FALSE}
+```{r}
 t.test(M ~ distractor.condition, 
        data = (p3b.target.anova.data %>% filter(distractor.condition != "Negative")),
        paired = TRUE,
@@ -293,7 +302,7 @@ t.test(M ~ distractor.condition,
 
 Is Baseline GREATER than Negative?
 
-```{r echo=FALSE}
+```{r}
 t.test(M ~ distractor.condition, 
        data = (p3b.target.anova.data %>% filter(distractor.condition != "Neutral")),
        paired = TRUE,
@@ -302,7 +311,7 @@ t.test(M ~ distractor.condition,
 
 Is Neutral GREATER than Negative?
 
-```{r echo=FALSE}
+```{r}
 t.test(M ~ distractor.condition, 
        data = (p3b.target.anova.data %>% filter(distractor.condition != "Baseline")),
        paired = TRUE,
@@ -311,7 +320,7 @@ t.test(M ~ distractor.condition,
 
 Plot (Figure 5)
 
-```{r echo=FALSE}
+```{r}
 
 p3b.target.plot.data <- p3b.target.difference.waves %>%
   group_by(t, distractor.condition) %>%
@@ -372,31 +381,31 @@ p3b.distractor.anova$ANOVA
 
 Post-hoc tests
 
-Is Baseline GREATER than Neutral?
+Is Baseline LESS than Neutral?
 
 ```{r echo=FALSE}
 t.test(M ~ distractor.condition, 
        data = (p3b.distractor.anova.data %>% filter(distractor.condition != "Negative")),
        paired = TRUE,
-       alternative="greater")
+       alternative="less")
 ```
 
-Is Baseline GREATER than Negative?
+Is Baseline LESS than Negative?
 
 ```{r echo=FALSE}
 t.test(M ~ distractor.condition, 
        data = (p3b.distractor.anova.data %>% filter(distractor.condition != "Neutral")),
        paired = TRUE,
-       alternative="greater")
+       alternative="less")
 ```
 
-Is Neutral GREATER than Negative?
+Is Neutral LESS than Negative?
 
 ```{r echo=FALSE}
 t.test(M ~ distractor.condition, 
        data = (p3b.distractor.anova.data %>% filter(distractor.condition != "Baseline")),
        paired = TRUE,
-       alternative="less")
+       alternative="greater")
 ```
 
 Plot (Figure 6)
@@ -449,14 +458,6 @@ pp.anova <- ezANOVA(pp.data.anova, wid=subject, dv=M, within=c(hemisphere, distr
 pp.anova$ANOVA
 ```
 
-Post-hoc comparisons
-
-```{r echo=FALSE}
-pp.data.t.test <- pp.data.anova %>%
-  group_by(subject, distractor.condition) %>%
-  summarize(M= mean(M))
-```
-
 
 Plot (Figure 7)
 
@@ -495,37 +496,35 @@ n2.pp.correct.incorrect <- eeg.data.correct.incorrect %>%
 
 n2.pp.correct.incorrect.difference.wave <- n2.pp.correct.incorrect %>%
   spread(correct.condition, voltage) %>%
-  mutate(difference.wave = Correct - Incorrect) %>%
+  mutate(difference.wave = Incorrect - Correct) %>%
   select(-Correct, -Incorrect)
 ```
 
-Time window 250-350ms for N2. One sample t-test: Is difference wave significantly greater than 0?
+Time window 250-350ms for N2. One sample t-test: Is difference wave significantly less than 0?
 
-```{r echo=FALSE}
+```{r}
 n2.pp.correct.incorrect.difference.wave %>%
   filter(t %in% 250:350) %>%
-  group_by(subject) %>%
-  summarize(M = mean(difference.wave)) %>%
-  pull(M) %>%
-  t.test(mu=0, alternative = "greater")
-```
-
-Time window 410-650ms for posterior positivity. Is difference wave significantly less than 0?
-
-```{r echo=FALSE}
-n2.pp.correct.incorrect.difference.wave %>%
-  filter(t %in% 410:650) %>%
   group_by(subject) %>%
   summarize(M = mean(difference.wave)) %>%
   pull(M) %>%
   t.test(mu=0, alternative = "less")
 ```
 
+Time window 410-650ms for posterior positivity. Is difference wave significantly greater than 0?
+
+```{r}
+n2.pp.correct.incorrect.difference.wave %>%
+  filter(t %in% 410:650) %>%
+  group_by(subject) %>%
+  summarize(M = mean(difference.wave)) %>%
+  pull(M) %>%
+  t.test(mu=0, alternative = "greater")
+```
+
 Plot
 
-*Quick Note: Kennedy et al.'s plot of the difference curve is inverted for some reason (i.e., positive values are plotted as negative values) so even though our pattern looks like the opposite, it is actually in the same direction.*
-
-```{r echo=FALSE, warning=FALSE}
+```{r warning=FALSE}
 n2.pp.correct.incorrect.plot.data <- n2.pp.correct.incorrect %>%
   group_by(correct.condition, t) %>%
   summarize(M = mean(voltage))
@@ -554,11 +553,11 @@ p3b.correct.incorrect <- eeg.data.correct.incorrect %>%
 
 p3b.correct.incorrect.difference.wave <- p3b.correct.incorrect %>%
   spread(correct.condition, voltage) %>%
-  mutate(difference.wave = Correct - Incorrect) %>%
+  mutate(difference.wave = Incorrect - Correct) %>%
   select(-Correct, -Incorrect)
 ```
 
-Time window 400-550ms. Is difference wave significantly less than 0?
+Time window 400-550ms. Is difference wave significantly greater than 0?
 
 ```{r echo=FALSE}
 p3b.correct.incorrect.difference.wave %>%
@@ -566,10 +565,10 @@ p3b.correct.incorrect.difference.wave %>%
   group_by(subject) %>%
   summarize(M = mean(difference.wave)) %>%
   pull(M) %>%
-  t.test(mu=0, alternative = "less")
+  t.test(mu=0, alternative = "greater")
 ```
 
-Time window 635-995ms. Is difference wave significantly greater than 0?
+Time window 635-995ms. Is difference wave significantly less than 0?
 
 ```{r echo=FALSE}
 p3b.correct.incorrect.difference.wave %>%
@@ -577,12 +576,12 @@ p3b.correct.incorrect.difference.wave %>%
   group_by(subject) %>%
   summarize(M = mean(difference.wave)) %>%
   pull(M) %>%
-  t.test(mu=0, alternative = "greater")
+  t.test(mu=0, alternative = "less")
 ```
 
 Plot
 
-```{r echo=FALSE}
+```{r}
 p3b.correct.incorrect.plot.data <- p3b.correct.incorrect %>%
   group_by(correct.condition, t) %>%
   summarize(M = mean(voltage))
@@ -590,7 +589,9 @@ p3b.correct.incorrect.plot.data <- p3b.correct.incorrect %>%
 p3b.correct.incorrect.difference.wave.plot.data <- p3b.correct.incorrect.difference.wave %>%
   group_by(t) %>%
   summarize(M = mean(difference.wave))
+```
 
+```{r echo=FALSE}
 ggplot(p3b.correct.incorrect.plot.data, aes(x=t,y=M,color=correct.condition))+
   geom_line()+
   geom_line(data=p3b.correct.incorrect.difference.wave.plot.data, aes(color=NA))+

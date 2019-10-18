@@ -9,6 +9,9 @@ library(dplyr)
 library(ggplot2)
 library(ez)
 library(tidyr)
+library(grid)
+library(scales)
+library(mapproj)
 ```
 
 
@@ -37,7 +40,7 @@ Graph
 ```{r message=FALSE, warning=FALSE}
 subject.level <- all.behavioral.data %>% 
   filter(phase == 'test', target_lag %in% c(2,8)) %>%
-  mutate(correct = as.numeric((correct == 'true'))) %>%
+  mutate(correct = as.numeric((correct == 'TRUE'))) %>%
   group_by(participant_id, distractor_type, target_lag) %>%
   summarize(accuracy = mean(correct))
 
@@ -69,6 +72,32 @@ We start by loading in the tidy EEG data. See the `generate-tidy-eeg-data.R` fil
 eeg.data <- read_csv('data/tidy/eeg-data-tidy.csv', progress= FALSE) %>%
   filter(subject %in% good.subjects)
 ```
+
+We will also load the sensor location data to help us to create topographic maps.
+
+```{r}
+sensor_reference <- read_csv('data/sensorreference.csv')
+```
+
+```{r}
+sensor_reference <- sensor_reference %>%
+  mutate(
+    length = sqrt(x^2 + y^2 + z^2),
+    x.unit = x / length,
+    y.unit = y / length,
+    z.unit = z / length,
+    lat = asin(z.unit) * 90 / (pi / 2),
+    long = atan2(x.unit, y.unit) * 90 / (pi / 2)
+  )
+
+z <- mapproject(sensor_reference$long, sensor_reference$lat, projection = "azequidistant", orientation=c(90,0,0))
+
+sensor_reference$x <- z$x
+sensor_reference$y <- -z$y
+
+sensor_reference <- sensor_reference %>% select(electrode, x,y)
+```
+
 
 ## N2
 
@@ -172,6 +201,228 @@ ggplot(n2.distractor.erp, aes(x=t, y=M, color=distractor.condition))+
 
 *Note that it is weird that the average waveforms in the target window are positive, but the t-tests for peak negative amplitude in this window are significantly below 0! Why might that happen, and what does it potentially say about peak negative amplitude as a way of establishing whether there is a significantly below 0 effect?*
 
+Generate data for topographic plots for Distractor N2.
+```{r}
+n2.distractor.topo.data <- eeg.data %>%
+  filter(lag.condition == "Lag8") %>%
+  select(-lag.condition)
+
+n2.distractor.baseline.topo.data <- n2.distractor.topo.data %>% 
+  filter(distractor.condition == "Baseline") %>%
+  mutate(baseline.voltage = voltage) %>%
+  select(-voltage, -distractor.condition)
+
+n2.distractor.topo.difference.waves <- n2.distractor.topo.data %>%
+  left_join(n2.distractor.baseline.topo.data, by=c("subject", "t", "electrode")) %>%
+  mutate(difference.wave = voltage - baseline.voltage) %>%
+  select(-voltage, -baseline.voltage) %>%
+  filter(distractor.condition != "Baseline", t== 225) %>% group_by(electrode) %>%
+  summarise(amplitude = mean(difference.wave)) %>% left_join(sensor_reference, by="electrode") %>% mutate(key_electrode = if_else(electrode %in% c(64,68,69,89,94,95), "key", "not"))
+```
+
+
+```{r}
+
+theme_topo <- function(base_size = 12)
+  {
+  theme_bw(base_size = base_size) %+replace%
+      theme(
+            rect             = element_blank(),
+            line             = element_blank(),
+            axis.text = element_blank(),
+            axis.title = element_blank()
+           )
+}
+
+circleFun <- function(center = c(0,0), r, npoints = 100) {
+  tt <- seq(0,2*pi,length.out = npoints)
+  xx <- center[1] + r * cos(tt)
+  yy <- center[2] + r * sin(tt)
+  return(data.frame(x = xx, y = yy))
+}
+
+headShape <- circleFun(c(0, 0), round(max(sensor_reference$x)), npoints = 100) # 0
+nose <- data.frame(x = c(-.5,0,.5),y=c(1.95,2.3,1.95))
+
+ggplot(headShape,aes(x,y))+
+  geom_path(color="grey")+
+  geom_text(data = sensor_reference,
+            aes(x, y, label = electrode))+
+  geom_line(data = nose,
+            aes(x, y, z = NULL), color="grey")+
+  theme_topo()+
+  coord_equal()
+
+
+head <- geom_path(data = headShape,
+            aes(x,y,z = NULL,fill = NULL),
+            size = .5)
+nose_shape <- geom_path(data = nose,
+            aes(x, y, z = NULL, fill = NULL),
+            size = .5)
+```
+
+```{r}
+#Define Matlab-style Jet colourmap
+jet.colors <- colorRampPalette(c("#00007F", "blue", "#007FFF", "cyan", "#7FFF7F", "yellow", "#FF7F00", "red", "#7F0000"))
+
+#Draw our map!
+ggplot(headShape,aes(x,y))+
+  geom_line(data = nose,aes(x, y, z = NULL),size = 1.5)+
+  geom_path(size = 1.5)+
+  geom_point(data = n2.distractor.topo.difference.waves,aes(x,y,colour = amplitude),size = 3)+
+  scale_colour_gradientn(colours = jet.colors(10),guide = "colourbar", oob = squish)+ #note: oob = squish forces everything outside the colour limits to equal nearest colour boundary (i.e. below min colours = min colour)
+  theme_topo()+
+  coord_equal()
+```
+
+```{r}
+rmax <- 3   #specify a maximum boundary for the grid
+gridRes <- 67 #specify the interpolation grid resolution
+
+## Create a function to perform Matlab's v4 interpolation.
+## Takes as input a data-frame with columns x, y, and z (x co-ordinates, y co-ordinates, and amplitude)
+## and variables xo and yo, the co-ordinates which will be use to create a grid for interpolation
+
+v4Interp <- function(df, xo, yo, rmax = 3, gridRes = 67) {
+  xo <- matrix(rep(xo,length(yo)),nrow = length(xo),ncol = length(yo))
+  yo <- t(matrix(rep(yo,length(xo)),nrow = length(yo),ncol = length(xo)))
+  xy <- df$x + df$y*sqrt(as.complex(-1))
+  d <- matrix(rep(xy,length(xy)),nrow = length(xy), ncol = length(xy))
+  d <- abs(d - t(d))
+  diag(d) <- 1
+  g <- (d^2) * (log(d)-1)   # Green's function.
+  diag(g) <- 0
+  weights <- qr.solve(g,df$z)
+  xy <- t(xy)
+  outmat <- matrix(nrow = gridRes,ncol = gridRes)
+  for (i in 1:gridRes){
+    for (j in 1:gridRes) {
+      test4 <- abs((xo[i,j] + sqrt(as.complex(-1))*yo[i,j]) - xy)
+      g <- (test4^2) * (log(test4)-1)
+      outmat[i,j] <- g %*% weights
+      }
+  }
+  outDf <- data.frame(x = xo[,1],outmat)
+  names(outDf)[1:length(yo[1,])+1] <- yo[1,]
+  #return(list(x = xo[,1],y = yo[1,],z = outmat))
+  return(outDf)
+}
+
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = n2.distractor.topo.difference.waves$x,
+                     y = n2.distractor.topo.difference.waves$y,
+                     z = n2.distractor.topo.difference.waves$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = n2.distractor.topo.difference.waves,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = n2.distractor.topo.difference.waves,
+             aes(x,y, color = key_electrode),
+             size = 1.5) +
+  scale_color_manual(values = c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-2.5,2.5),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
+```
+```{r}
+n2.distractor.topo.difference.waves.overall <- n2.distractor.topo.data %>%
+  left_join(n2.distractor.baseline.topo.data, by=c("subject", "t", "electrode")) %>%
+  mutate(difference.wave = voltage - baseline.voltage) %>%
+  select(-voltage, -baseline.voltage) %>%
+  filter(distractor.condition != "Baseline", t %in% 500:1000) %>% group_by(electrode,t) %>%
+  summarise(amplitude = mean(difference.wave)) %>% left_join(sensor_reference, by="electrode") %>% mutate(key_electrode = if_else(electrode %in% c(64,68,69,89,94,95), "key", "not"))
+
+rmax <- 3   #specify a maximum boundary for the grid
+gridRes <- 67 #specify the interpolation grid resolution
+
+
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+interpV4 <- data.frame()
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+for (i in seq(500, 1000, 5)) {
+  n2.d.overall.spec.t <- n2.distractor.topo.difference.waves.overall %>% filter(t == i)
+  testDat<- data.frame(x = n2.d.overall.spec.t$x,
+                     y = n2.d.overall.spec.t$y,
+                     z = n2.d.overall.spec.t$amplitude)
+
+  #Create the interpolation grid
+  xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+  yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+  interpV4_mini <- v4Interp(testDat, xo, yo)
+  interpV4_mini <- gather(interpV4_mini,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+  
+  interpV4_mini <- interpV4_mini %>% mutate(t=i)
+
+  interpV4 <- rbind(interpV4,interpV4_mini)
+}
+
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark
+
+ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = n2.distractor.topo.difference.waves,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = n2.distractor.topo.difference.waves,
+             aes(x,y, color = key_electrode),
+             size = 1.5) +
+  scale_color_manual(values = c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-2.5,2.5),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+```
+
+
 ### Target Pictures
 
 We need to subtract each lag 8 condition from the corresponding lag 2, which isolates the appearance of the target.
@@ -259,6 +510,67 @@ ggplot(n2.target.plotting.data,  aes(x=t, y=M, color=distractor.condition))+
   theme_bw()
 ```
 
+Topographic data for plot for N2 target
+```{r}
+n2.target.topo.difference.waves <- eeg.data %>% filter(t==450) %>%
+  spread(lag.condition, voltage) %>%
+  mutate(difference.wave = Lag2 - Lag8) %>%
+  select(-Lag2, -Lag8) %>% group_by(electrode) %>%
+  summarise(amplitude = mean(difference.wave)) %>% left_join(sensor_reference, by="electrode") %>% mutate(key_electrode = if_else(electrode %in% c(64,68,69,89,94,95), "key", "not"))
+```
+
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = n2.target.topo.difference.waves$x,
+                     y = n2.target.topo.difference.waves$y,
+                     z = n2.target.topo.difference.waves$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = n2.target.topo.difference.waves,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = n2.target.topo.difference.waves,
+             aes(x,y,color=key_electrode),
+             size = 1.5)+
+  scale_colour_manual(values=c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-2,2),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
+```
+
+
+
 ## P3b
 
 ### Target Pictures
@@ -332,6 +644,67 @@ ggplot(p3b.target.plot.data, aes(x=t,y=M, color=distractor.condition))+
   scale_x_continuous(limits = c(-200,1200), expand=c(0,0))+
   annotate("rect", xmin=635,xmax=995,ymin=-4,ymax=5, alpha=0.2)+
   theme_bw()
+```
+
+Create data for p3b target topographic map.
+```{r}
+p3b.target.topo.difference.waves <- eeg.data %>%
+  filter(t == 720) %>%
+  spread(lag.condition, voltage) %>%
+  mutate(difference.wave = Lag2 - Lag8) %>%
+  select(-Lag2, -Lag8) %>%
+  group_by(subject, distractor.condition, electrode) %>%
+  summarize(M.difference.wave = mean(difference.wave)) %>% 
+  group_by(electrode) %>% summarise(amplitude = mean(M.difference.wave)) %>% left_join(sensor_reference, by="electrode") %>% mutate(key_electrode = if_else(electrode %in% c(54,55,79,78,61,62), "key", "not"))
+```
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = p3b.target.topo.difference.waves$x,
+                     y = p3b.target.topo.difference.waves$y,
+                     z = p3b.target.topo.difference.waves$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = p3b.target.topo.difference.waves,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = p3b.target.topo.difference.waves,
+             aes(x,y, color=key_electrode),
+             size = 1.5)+
+  scale_color_manual(values=c("white","grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-4,4),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
 ```
 
 ### Distractor Pictures
@@ -423,6 +796,85 @@ ggplot(p3b.distractor.plot.data, aes(x=t, y=M, color=distractor.condition))+
   theme_bw()
 ```
 
+Create data for topographic maps for P3b distractor
+```{r}
+p3b.distractor.topo.data <- eeg.data %>%
+  filter(t == 485) %>%
+  filter(lag.condition == "Lag8") %>%
+  select(-lag.condition, -t)
+
+p3b.distractor.topo.baseline <- p3b.distractor.topo.data %>%
+  filter(distractor.condition == "Baseline") %>%
+  mutate(baseline.voltage = voltage) %>%
+  select(-voltage, -distractor.condition)
+  
+# need to merge in lag 2 baseline - lag 8 baseline
+p3b.distractor.topo.baseline.difference <- eeg.data %>%
+  filter(t == 485) %>%
+  filter(distractor.condition == "Baseline") %>%
+  spread(lag.condition, voltage) %>%
+  mutate(difference.wave = Lag2 - Lag8) %>%
+  select(-Lag2, -Lag8, -t)
+
+p3b.distractor.topo.difference.waves <- p3b.distractor.topo.data %>%
+  inner_join(p3b.distractor.topo.baseline, by=c("subject", "electrode")) %>%
+  filter(distractor.condition != "Baseline") %>%
+  mutate(difference.wave = voltage - baseline.voltage) %>%
+  select(-baseline.voltage, -voltage) %>% rbind(p3b.distractor.topo.baseline.difference) %>%
+  group_by(electrode) %>% summarise(amplitude = mean(difference.wave)) %>%
+  left_join(sensor_reference, by="electrode") %>% mutate(key_electrode = if_else(electrode %in% c(54,55,79,78,61,62), "key", "not"))
+
+```
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = p3b.distractor.topo.difference.waves$x,
+                     y = p3b.distractor.topo.difference.waves$y,
+                     z = p3b.distractor.topo.difference.waves$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = p3b.distractor.topo.difference.waves,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = p3b.distractor.topo.difference.waves,
+             aes(x,y, color=key_electrode),
+             size = 1.5)+
+    scale_color_manual(values=c("white","grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-1.5,1.5),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
+```
+
 ## Posterior Positivity
 
 Remove lag 8 baseline from lag 8 neutral and negative, as in the N2 analysis. But the electrodes are different here: 64, 68, 69, 96, 100, 101.
@@ -473,6 +925,73 @@ ggplot(pp.data.plot, aes(x=t, y=M, color=distractor.condition))+
   annotate("rect", xmin=405,xmax=615,ymin=-1,ymax=2, alpha=0.2)+
   theme_bw()
   
+```
+
+```{r}
+pp.topo.data <- eeg.data %>%
+  filter(lag.condition == "Lag8", t==470) %>%
+  select(-lag.condition, -t)
+
+pp.topo.baseline.data <- pp.topo.data %>%
+  filter(distractor.condition == "Baseline") %>%
+  mutate(baseline.voltage = voltage) %>%
+  select(-voltage, -distractor.condition)
+  
+pp.topo.difference.waves <- pp.topo.data %>%
+  left_join(pp.topo.baseline.data, by=c("subject", "electrode")) %>%
+  mutate(difference.wave = voltage - baseline.voltage) %>%
+  select(-voltage, -baseline.voltage) %>%
+  filter(distractor.condition != "Baseline") %>% group_by(electrode) %>%
+  summarise(amplitude = mean(difference.wave)) %>% left_join(sensor_reference, by="electrode") %>% mutate(key_electrode = if_else(electrode %in% c(64,68,69,96,100,101), "key", "not"))
+```
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = pp.topo.difference.waves$x,
+                     y = pp.topo.difference.waves$y,
+                     z = pp.topo.difference.waves$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = pp.topo.difference.waves,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = pp.topo.difference.waves,
+             aes(x,y, color=key_electrode),
+             size = 1.5)+
+  scale_color_manual(values=c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-1.5,1.5),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
 ```
 
 ## Correct vs. Incorrect
@@ -543,6 +1062,118 @@ ggplot(n2.pp.correct.incorrect.plot.data, aes(x=t,y=M,color=correct.condition))+
   theme_bw()
 ```
 
+```{r}
+n2.pp.topo.correct.incorrect.difference.wave <- eeg.data.correct.incorrect %>%
+  filter(t == 290 | t==535 ) %>%
+  spread(correct.condition, voltage) %>%
+  mutate(difference.wave = Incorrect - Correct) %>%
+  select(-Correct, -Incorrect) %>% group_by(electrode, t) %>% summarise(amplitude = mean(difference.wave)) %>% left_join(sensor_reference, by="electrode")
+
+n2.topo.correct.incorrect.difference.wave <- n2.pp.topo.correct.incorrect.difference.wave %>%
+  filter(t == 290) %>% mutate(key_electrode = if_else(electrode %in% c(64,68,69,89,94,95), "key", "not"))
+
+pp.topo.correct.incorrect.difference.wave <- n2.pp.topo.correct.incorrect.difference.wave %>%
+  filter(t == 535) %>% mutate(key_electrode = if_else(electrode %in% c(64,68,69,96,100,101), "key", "not"))
+```
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = n2.topo.correct.incorrect.difference.wave$x,
+                     y = n2.topo.correct.incorrect.difference.wave$y,
+                     z = n2.topo.correct.incorrect.difference.wave$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = n2.topo.correct.incorrect.difference.wave,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = n2.topo.correct.incorrect.difference.wave,
+             aes(x,y, color=key_electrode),
+             size = 1.5)+
+  scale_color_manual(values=c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-1.5,1.5),
+                       guide = "colourbar",
+                       oob = squish)+
+  head+
+  nose_shape+
+  coord_equal()
+
+v4plot
+```
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = pp.topo.correct.incorrect.difference.wave$x,
+                     y = pp.topo.correct.incorrect.difference.wave$y,
+                     z = pp.topo.correct.incorrect.difference.wave$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = pp.topo.correct.incorrect.difference.wave,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = pp.topo.correct.incorrect.difference.wave,
+             aes(x,y, color=key_electrode),
+             size = 1.5)+
+  scale_color_manual(values=c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-1.5,1.5),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
+```
+
 ### Distractor and Target P3b
 
 Finding difference wave (correct trials - incorrect trials)
@@ -600,4 +1231,118 @@ ggplot(p3b.correct.incorrect.plot.data, aes(x=t,y=M,color=correct.condition))+
   annotate("rect", xmin=400,xmax=550,ymin=-2,ymax=4, alpha=0.2)+
   annotate("rect", xmin=635,xmax=995,ymin=-2,ymax=4, alpha=0.2)+
   theme_bw()
+```
+
+Producing topographic plot data
+```{r}
+p3b.topo.correct.incorrect.difference.wave <- eeg.data.correct.incorrect %>%
+  filter( t == 500 | t == 800) %>%
+  spread(correct.condition, voltage) %>%
+  mutate(difference.wave = Incorrect - Correct) %>%
+  select(-Correct, -Incorrect) %>% group_by(electrode, t) %>% 
+  summarise(amplitude = mean(difference.wave)) %>%
+  left_join(sensor_reference, by="electrode") %>% mutate(key_electrode = if_else(electrode %in% c(54,55,79,78,61,62), "key", "not"))
+
+p3b.target.topo.correct.incorrect.difference.wave <- p3b.topo.correct.incorrect.difference.wave %>% 
+  filter(t == 800)
+
+p3b.dist.topo.correct.incorrect.difference.wave <- p3b.topo.correct.incorrect.difference.wave %>% filter(t == 500)
+```
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = p3b.dist.topo.correct.incorrect.difference.wave$x,
+                     y = p3b.dist.topo.correct.incorrect.difference.wave$y,
+                     z = p3b.dist.topo.correct.incorrect.difference.wave$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = p3b.dist.topo.correct.incorrect.difference.wave,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = p3b.dist.topo.correct.incorrect.difference.wave,
+             aes(x,y, color=key_electrode),
+             size = 1.5)+
+  scale_color_manual(values=c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-1,1),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
+```
+
+```{r}
+maskRing <- circleFun(r = 2.65) #create a circle round the outside of the plotting area to mask the jagged edges of the interpolation
+
+## Create data frame to be used for interpolation - the function needs columns labelled x, y, and z
+
+testDat<- data.frame(x = p3b.target.topo.correct.incorrect.difference.wave$x,
+                     y = p3b.target.topo.correct.incorrect.difference.wave$y,
+                     z = p3b.target.topo.correct.incorrect.difference.wave$amplitude)
+
+#Create the interpolation grid
+xo <- seq(min(-rmax, testDat$x), max(rmax, testDat$x), length = gridRes)
+yo <- seq(max(rmax, testDat$y), min(-rmax, testDat$y), length = gridRes)
+
+interpV4 <- v4Interp(testDat, xo, yo)
+
+interpV4 <- gather(interpV4,
+                   key = y,
+                   value = amplitude,
+                   -x,
+                   convert = TRUE) 
+
+interpV4$incircle <- (interpV4$x)^2 + (interpV4$y)^2 < 2.65 ^ 2 # mark #2.65 ^ 2
+
+v4plot <- ggplot(interpV4[interpV4$incircle,],aes(x = x, y = y, fill = amplitude))+
+  geom_raster()+
+  stat_contour(aes(z = amplitude),binwidth = 0.5)+
+  theme_topo()+
+   geom_path(data = maskRing,
+            aes(x, y, z = NULL, fill =NULL),
+            colour = "white",
+            size = 6)+
+  geom_point(data = p3b.target.topo.correct.incorrect.difference.wave,
+             aes(x,y), color="black",
+             size = 1.9)+
+  geom_point(data = p3b.target.topo.correct.incorrect.difference.wave,
+             aes(x,y, color=key_electrode),
+             size = 1.5)+
+  scale_color_manual(values=c("white", "grey30")) +
+  scale_fill_gradientn(colours = jet.colors(10),
+                       limits = c(-1.25,1.25),
+                       guide = "colourbar",
+                       oob = squish)+
+  head +
+  nose_shape +
+  coord_equal()
+
+v4plot
 ```
